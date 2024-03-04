@@ -13,8 +13,11 @@ https://github.com/PeterW081/SdkTaifexMp2023/blob/master/subdir_Example/cxx_src_
 　本案目前已有內容，主要是 TCP 電文的建模，以及基於所建模型的電文製作、電文收發（TCP收發）。具體用法，可見上文中的示範代碼。
 －－
 　TCP 電文建模，採用物件導向設計。
-　電文本身包裝為物件類別，且有提供參照包裝物件（ReferenceWrapper）。參照包裝物件能夠指向已有 Buffer（ByteArray、CharArray），直接進行電文讀寫操作。如此可於網卡緩存直接讀寫 TCP 電文內容，減少記憶體拷貝次數，適應高頻通訊情境。（RegexSearch：".*::view::message::.*"。）
-　電文操作封裝為物件實例函式（好過四散各處的靜態函式）。此中結合奇異遞歸模板模式（CRTP）、多重繼承、Concept，實現物件實例函式的後置設定。如此能以插件方式，對於特定型別—— Concept 斷言成功者——，疊加物件實例函式。電文操作封裝而成的物件實例函式，更加容易擴展，更加容易維護。（RegexSearch：".*::view02::(message|msg.*)::.*"。）
+　＃RegexSearch："class.*::view::message::.*"
+　電文本身包裝為物件類別，且有提供參照包裝物件（ReferenceWrapper）。參照包裝物件能夠指向已有 Buffer（ByteArray、CharArray），直接進行電文讀寫操作。如此可於網卡緩存直接讀寫 TCP 電文內容，減少記憶體拷貝次數，適應高頻通訊情境。
+　＃RegexSearch："class.*::view02::(message|msg.*)::.*"
+　電文操作封裝為物件實例函式（好過四散各處的靜態函式）。此中結合奇異遞歸模板模式（CRTP）、多重繼承、Concept，實現物件實例函式的後置設定。如此能以插件方式，對於特定型別—— Concept 斷言成功者——，疊加物件實例函式。電文操作封裝而成的物件實例函式，更加容易擴展，更加容易維護。
+　＃RegexSearch：".*[LR].._FieldNo...*"
 　電文建模代碼，具有設計適應 CodeReview 複查。電文原始模型，物件實例屬性名稱嚴格對照上述《電文規範》。電文原始模型的參照包裝物件，積極使用巨集（Macro）描述實體與參照間的對應關係。此中代碼行文雖然略為費解，但是便利不懂程式編程的第三方進行 CodeReview 複查、進而實現多方多重檢查。編程介面設計之中，非為行文主體，故此無傷大雅。
 －－
 　TCP 電文收發，目前從簡設計。後續嘗試收斂 BoostAsio 下之 Sync、Async 模式的程式代碼，以使同套代碼能夠兼容不同模式。後續嘗試實現 tcp read timeout 功能，尤其 BoostAsio Sync 模式之下實現 timeout 功能。
