@@ -1,49 +1,18 @@
-set(VAR_PROJECT_NAME "XplumSdk-TaifexMp")
-set(Enable_GTest ON)
-#--
-set(VARS_INCLUDE_DIRS)
+set(VAR0_PROJECT_NAME "XplumSdk-TaifexMp")
 
 ###
-cmake_minimum_required(VERSION 3.24)
-project("${VAR_PROJECT_NAME}")
+cmake_minimum_required(VERSION "3.24.2")
+project("${VAR0_PROJECT_NAME}" VERSION 0.08.019786)
+##-
 set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 ###
 find_package(Boost REQUIRED COMPONENTS system)
-list(
-  APPEND VARS_INCLUDE_DIRS "${Boost_INCLUDE_DIRS}"
-)
-
-###
-FILE(
-  GLOB VARS_PROJECT_CXX_SOURCE
-  "${CMAKE_SOURCE_DIR}/cxx_src/*.cxx"
-  "${CMAKE_SOURCE_DIR}/separate_0CxxCommon-cxx_src/*.cxx"
-)
-add_library(
-  "${VAR_PROJECT_NAME}"
-  "${VARS_PROJECT_CXX_SOURCE}"
-)
-target_include_directories(
-  "${VAR_PROJECT_NAME}" PUBLIC
-  "${CMAKE_SOURCE_DIR}/cxx_include/"
-  "${CMAKE_SOURCE_DIR}/separate_0CxxCommon-cxx_include/"
-)
-target_include_directories(
-  "${VAR_PROJECT_NAME}" PRIVATE
-  "${VARS_INCLUDE_DIRS}"
-)
-
-###
-add_executable(
-  "${VAR_PROJECT_NAME}-Main"
-  "${CMAKE_SOURCE_DIR}/main.cxx"
-)
-target_include_directories(
-  "${VAR_PROJECT_NAME}-Main" PRIVATE
-  "${VARS_INCLUDE_DIRS}"
-)
-target_link_libraries(
-  "${VAR_PROJECT_NAME}-Main" PRIVATE
-  "${VAR_PROJECT_NAME}"
-)
+add_subdirectory("${PROJECT_SOURCE_DIR}/subdir_Member01-TaifexMp-Origin")
+add_subdirectory("${PROJECT_SOURCE_DIR}/subdir_Member02-TaifexMp-Widget")
+add_subdirectory("${PROJECT_SOURCE_DIR}/subdir_Separate-Common")
+add_subdirectory("${PROJECT_SOURCE_DIR}/subdir_Separate-CommonBoost")
+if(ON)
+  add_subdirectory("${PROJECT_SOURCE_DIR}/subdir_Example")
+endif()
