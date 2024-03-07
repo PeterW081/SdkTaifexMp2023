@@ -2,16 +2,16 @@
 #include <boost/asio.hpp>
 
 namespace ext::boost_asio0 {
-class EzTcpAccesser_A;
+class EzTcpClient_A;
 }
 
 class                  //
     ext::boost_asio0:: //
-    EzTcpAccesser_A    //
+    EzTcpClient_A      //
 {
 public:
-  EzTcpAccesser_A(const EzTcpAccesser_A &inctance) = delete;
-  EzTcpAccesser_A operator=(const EzTcpAccesser_A &inctance) = delete;
+  EzTcpClient_A(const EzTcpClient_A &inctance) = delete;
+  EzTcpClient_A operator=(const EzTcpClient_A &inctance) = delete;
 
 protected:
   using TYPE_io_context = boost::asio::io_context;
@@ -22,6 +22,6 @@ protected:
   std::unique_ptr<TYPE_io_context> m_io_context;
   std::unique_ptr<TYPE_resolver> m_resolver;
   std::unique_ptr<TYPE_socket> m_socket;
-  explicit EzTcpAccesser_A(std::string_view, std::string_view); // host, port,
-  ~EzTcpAccesser_A();
+  explicit EzTcpClient_A(std::string_view, std::string_view); // host, port,
+  ~EzTcpClient_A();
 };

@@ -20,8 +20,8 @@ https://github.com/PeterW081/SdkTaifexMp2023/blob/master/subdir_Example/cxx_src_
 　＃RegexSearch：".*[LR].._FieldNo...*"
 　電文建模代碼，具有設計適應 CodeReview 複查。電文原始模型，物件實例屬性名稱嚴格對照上述《電文規範》。電文原始模型的參照包裝物件，積極使用巨集（Macro）描述實體與參照間的對應關係。此中代碼行文雖然略為費解，但是便利第三方進行 CodeReview 複查，進而實現多方多重檢查；參與複查者可以不懂編程。此中費解部分已被妥善包裝，非為編程介面下的行文主體，故此無傷大雅。
 －－
-　TCP 電文收發，目前從簡設計。後續嘗試收斂 BoostAsio 下之 Sync、Async 模式的程式代碼，以使同套代碼能夠兼容不同模式。後續嘗試實現 tcp read timeout 功能，尤其 BoostAsio Sync 模式之下實現 timeout 功能。
-　TCP 電文收發過程，目前僅有演示代碼提供參考。後續計畫使用有限狀態機（FSM）包裝電文收發過程，以使能夠模塊化編寫不同情境下的應對邏輯。
+　TCP 電文收發，目前從簡設計。BoostAsio 之下實現 read timeout 邏輯。
+　TCP 電文收發過程，目前僅有演示代碼提供參考。後續計畫使用有限狀態機（FSM）包裝電文收發過程，以使能夠模塊化地編寫不同情境下的應對邏輯。
 －－
 　目前缺乏應用環境，隔空開發頗為困難。有意合作者煩請聯繫以電子郵件，電子郵件地址為「racoontornado@outlook.com」。
 

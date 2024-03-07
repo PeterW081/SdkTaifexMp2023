@@ -3,7 +3,7 @@
 
 #pragma
 #include "xplum_sdkit/taifex_msg_proto/view02/msg_all_layer.h"
-#include "xplum_sdkit/taifex_msg_proto/network/MsgTcpAccesser_EzSync.h"
+#include "xplum_sdkit/taifex_msg_proto/network/EzTcpClientMsg_Sync.h"
 
 #pragma
 using namespace xplum_sdkit::taifex_msg_proto;
@@ -25,7 +25,8 @@ TEST(Example01_MsgLxx, Test01_0_L10_L60) {
 
   std::array<std::byte, 1024> buffer = {};
   auto unity = PATTERN_UNITY_TCP_SESSION;
-  auto tcp_accesser = network::MsgTcpAccesser_EzSync(unity.m_server_host, unity.m_server_port);
+  auto tcp_client_msg = network::EzTcpClientMsg_Sync(unity.m_server_host, unity.m_server_port);
+  auto tcp_read_timeout = std::chrono::seconds(decltype(unity)::M_LXX_LAYER_TIMEOUT_S);
 
   std::shared_ptr counter_msg_seq = std::make_shared<kitbag::CounterMsgSeqNumSimple>();
   unity.m_counter_msg_seq = counter_msg_seq;
@@ -38,11 +39,11 @@ TEST(Example01_MsgLxx, Test01_0_L10_L60) {
     msg_view.m_hdr.m_session_id = unity.m_session_id;
     msg_view.fx_assign_m_msg_time_0_time_now();
     msg_view.fx_assign_m_check_sum_0_algorithm();
-    tcp_accesser.write_msg(buffer);
+    tcp_client_msg.write_msg(buffer);
   }
   // reade - L10
   {
-    tcp_accesser.reade_msg(buffer);
+    tcp_client_msg.reade_msg(buffer, tcp_read_timeout);
     ASSERT_TRUE(MsgType::EnumType::L10 == ez_view::FX_GET_MSG_TYPE_IN_ORIGIN_MSG_1CONST(buffer.data()).enum_value());
     auto msg_view = view02::message::L10(buffer);
   }
@@ -53,11 +54,11 @@ TEST(Example01_MsgLxx, Test01_0_L10_L60) {
     msg_view.m_hdr.m_session_id = unity.m_session_id;
     msg_view.fx_assign_m_msg_time_0_time_now();
     msg_view.fx_assign_m_check_sum_0_algorithm();
-    tcp_accesser.write_msg(buffer);
+    tcp_client_msg.write_msg(buffer);
   }
   // reade - L30
   {
-    tcp_accesser.reade_msg(buffer);
+    tcp_client_msg.reade_msg(buffer, tcp_read_timeout);
     ASSERT_TRUE(MsgType::EnumType::L30 == ez_view::FX_GET_MSG_TYPE_IN_ORIGIN_MSG_1CONST(buffer.data()).enum_value());
     auto msg_view = view02::message::L30(buffer);
     unity.m_secrecy.m_append_no = msg_view.m_append_no;
@@ -88,11 +89,11 @@ TEST(Example01_MsgLxx, Test01_0_L10_L60) {
     msg_view.m_hdr.m_session_id = unity.m_session_id;
     msg_view.fx_assign_m_msg_time_0_time_now();
     msg_view.fx_assign_m_check_sum_0_algorithm();
-    tcp_accesser.write_msg(buffer);
+    tcp_client_msg.write_msg(buffer);
   }
   // reade - L41, L42, L50,
   {
-    tcp_accesser.reade_msg(buffer);
+    tcp_client_msg.reade_msg(buffer, tcp_read_timeout);
     ASSERT_TRUE(false                                                                                                  //
                 || MsgType::EnumType::L41 == ez_view::FX_GET_MSG_TYPE_IN_ORIGIN_MSG_1CONST(buffer.data()).enum_value() //
                 || MsgType::EnumType::L42 == ez_view::FX_GET_MSG_TYPE_IN_ORIGIN_MSG_1CONST(buffer.data()).enum_value() //
@@ -119,7 +120,7 @@ TEST(Example01_MsgLxx, Test01_0_L10_L60) {
     msg_view.m_hdr.m_session_id = unity.m_session_id;
     msg_view.fx_assign_m_msg_time_0_time_now();
     msg_view.fx_assign_m_check_sum_0_algorithm();
-    tcp_accesser.write_msg(buffer);
+    tcp_client_msg.write_msg(buffer);
   }
 
   ///
