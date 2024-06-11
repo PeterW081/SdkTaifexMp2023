@@ -1,5 +1,6 @@
-#include_next "xplum_sdkit/taifex_msg_proto/kitbag/msg_kitbag_re_orderno.h"
 #pragma once
+#include_next "xplum_sdkit/taifex_msg_proto/kitbag/msg_kitbag_re_orderno.h"
+#pragma
 
 // using xplum_sdkit::taifex_msg_proto::kitbag::ConvertorOrderNo;
 //

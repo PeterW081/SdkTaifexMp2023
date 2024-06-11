@@ -27,7 +27,7 @@ template <typename TYPE_MSG_VIEW01, typename TYPE_MSG_VIEW02_PANEL>
 using MsgViewPatchCommon = std::conditional<_nsign::MsgViewPatchCommon_Concept<TYPE_MSG_VIEW01>, _nsign::MsgViewPatchCommon<TYPE_MSG_VIEW02_PANEL>, typename _nsign::MsgViewPatchCommon<TYPE_MSG_VIEW02_PANEL>::ClassMock>::type;
 }
 
-template <typename TYPE_MSG_VIEW02_PANEL>
+template <typename TYPE_MSG_VIEW02_PANEL>                               //
 class xplum_sdkit::taifex_msg_proto::view02::msg_view_element::_nsign:: //
     MsgViewPatchCommon                                                  //
     : public xplum::ancestor::PluginerWay02<MsgViewPatchCommon<TYPE_MSG_VIEW02_PANEL>, TYPE_MSG_VIEW02_PANEL> {

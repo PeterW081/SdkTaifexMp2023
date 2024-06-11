@@ -1,6 +1,6 @@
 #include "xplum_sdkit/taifex_msg_proto/ancestor/CounterOrderSeqV.h"
-
 #pragma
+
 namespace nscxx_root = xplum_sdkit::taifex_msg_proto::ancestor;
 
 // using xplum_sdkit::taifex_msg_proto::ancestor::CounterOrderSeqV;

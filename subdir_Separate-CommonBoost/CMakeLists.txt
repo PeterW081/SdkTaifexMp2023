@@ -32,6 +32,7 @@ add_library(
 )
 target_include_directories(
   "${VAR0_PROJECT_NAME}" "${VAR0_FUNC_PARM0_LIBRARY_SET_ACCESS}"
+  "${PROJECT_SOURCE_DIR}/cxx_include_impl/"
   "${PROJECT_SOURCE_DIR}/cxx_include/"
   #
   "${Boost_INCLUDE_DIRS}"

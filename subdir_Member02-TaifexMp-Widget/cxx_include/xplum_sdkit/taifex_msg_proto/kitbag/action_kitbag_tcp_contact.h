@@ -9,13 +9,13 @@ using view::message_field::enumerate::SystemType;
 }
 namespace xplum_sdkit::taifex_msg_proto::kitbag {
 struct UnityTcpSession;
+struct UnityTcpSessionPluginReServer_MOCK;
 }
 
-struct                                                             //
-    xplum_sdkit::taifex_msg_proto::kitbag::                        //
-    UnityTcpSession                                                //
-    : xplum_model::taifex_msg_proto::network_agreement::TcpContact //
-{
+struct                                      //
+    xplum_sdkit::taifex_msg_proto::kitbag:: //
+    UnityTcpSession                         //
+    : xplum_model::taifex_msg_proto::network_agreement::TcpContact {
   // tcp contact
   std::string m_server_host;
   std::string m_server_port;
@@ -42,4 +42,17 @@ struct                                                             //
       this->m_append_no = std::nullopt;
     };
   } m_secrecy;
+};
+
+struct                                      //
+    xplum_sdkit::taifex_msg_proto::kitbag:: //
+    UnityTcpSessionPluginReServer_MOCK {
+  std::nullptr_t m_storage_fcm;           // Re: fx_is_allow_login_fcm_session(), fx_get_fcm_passwd(),
+  std::nullptr_t m_storage_fcm_login_log; // Re: fx_is_allow_login_fcm_session(),
+  std::nullptr_t m_storage_order;         // Re: fx_is_have_L41(),
+
+  auto fx_is_allow_login_fcm_session(type::TypeFcmId, type::TypeSessionId) -> bool; // fcm_id, session_id,
+  auto fx_is_have_L41(type::uint32) -> bool;
+  auto fx_mk_append_no_with_random() -> type::uint16;
+  auto fx_get_fcm_passwd(type::uint16) -> std::optional<type::uint16>;
 };

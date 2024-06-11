@@ -1,5 +1,6 @@
-#include_next "xplum_sdkit/taifex_msg_proto/ancestor/AssignerMsgFieldArrayChar.h"
 #pragma once
+#include_next "xplum_sdkit/taifex_msg_proto/ancestor/AssignerMsgFieldArrayChar.h"
+#pragma
 
 template <std::size_t TP01, char TP02, typename xplum::ancestor::AssignerArrayChar<TP01>::Align TP03>
 template <std::size_t RVALUE_ARRAY_SIZE>

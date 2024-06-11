@@ -1,6 +1,6 @@
 #include "xplum_sdkit/taifex_msg_proto/kitbag/msg_kitbag_re_orderno.h"
-
 #pragma
+
 namespace nscxx_root = xplum_sdkit::taifex_msg_proto::kitbag;
 
 // using xplum_sdkit::taifex_msg_proto::kitbag::CounterOrderSeqSimple;

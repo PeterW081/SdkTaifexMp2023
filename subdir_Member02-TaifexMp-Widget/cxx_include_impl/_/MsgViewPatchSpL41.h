@@ -1,5 +1,6 @@
-#include_next "xplum_sdkit/taifex_msg_proto/view02/MsgViewPatchSpL41.h"
 #pragma once
+#include_next "xplum_sdkit/taifex_msg_proto/view02/MsgViewPatchSpL41.h"
+#pragma
 
 // using xplum_sdkit::taifex_msg_proto::view02::msg_view_element::_nsign::MsgViewPatchSpL41;
 //

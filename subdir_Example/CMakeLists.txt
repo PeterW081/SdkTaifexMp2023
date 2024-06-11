@@ -19,7 +19,7 @@ FetchContent_Declare(
 FetchContent_MakeAvailable(googletest)
 
 ###
-FILE(GLOB_RECURSE ARR0_PROJECT_CXX_SOURCE "${PROJECT_SOURCE_DIR}/cxx_src_gtest/*.cxx")
+FILE(GLOB_RECURSE ARR0_PROJECT_CXX_SOURCE "${PROJECT_SOURCE_DIR}/cxx_src_example/*.cxx")
 add_executable(
   "${VAR0_PROJECT_NAME}"
   "${ARR0_PROJECT_CXX_SOURCE}"

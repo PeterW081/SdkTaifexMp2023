@@ -14,6 +14,6 @@ using uint32 = ext::boost0::big_endian_uint32::value_type;
 
 // message field 02
 using TypeMsgLength = uint16;
-using TypeFcmId = int16;
-using TypeSessionId = int16;
+using TypeFcmId = uint16;
+using TypeSessionId = uint16;
 }

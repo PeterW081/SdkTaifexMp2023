@@ -1,6 +1,7 @@
-#include_next "xplum_sdkit/taifex_msg_proto/view02/MsgViewPatchReOrderNo.h"
-
 #pragma once
+#include_next "xplum_sdkit/taifex_msg_proto/view02/MsgViewPatchReOrderNo.h"
+#pragma
+
 #include "xplum_sdkit/taifex_msg_proto/static_function_msg.h"
 
 // using xplum_sdkit::taifex_msg_proto::view02::msg_view_element::_nsign::MsgViewPatchReOrderNo;

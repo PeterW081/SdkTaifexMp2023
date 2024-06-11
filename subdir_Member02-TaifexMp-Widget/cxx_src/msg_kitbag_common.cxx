@@ -1,6 +1,6 @@
 #include "xplum_sdkit/taifex_msg_proto/kitbag/msg_kitbag_common.h"
-
 #pragma
+
 #include <cassert>
 namespace nscxx_root = xplum_sdkit::taifex_msg_proto::kitbag;
 
