@@ -1,7 +1,8 @@
 #pragma once
 #include <boost/endian/arithmetic.hpp>
 
-namespace ext::boost0 {
+namespace ext::boost0
+{
 // big endian integer
 using big_endian_int08 = boost::endian::big_int8_t;
 using big_endian_int16 = boost::endian::big_int16_t;

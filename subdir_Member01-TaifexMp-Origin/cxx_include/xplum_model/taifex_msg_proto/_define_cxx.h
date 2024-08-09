@@ -1,7 +1,8 @@
 #pragma once
 #include "boost0/big_endian_integer.h"
 
-namespace xplum_model::taifex_msg_proto::type {
+namespace xplum_model::taifex_msg_proto::type
+{
 // message field
 using char0 = char;
 using int08 = ext::boost0::big_endian_int08::value_type;

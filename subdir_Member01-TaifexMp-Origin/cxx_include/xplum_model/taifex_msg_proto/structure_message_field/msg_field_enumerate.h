@@ -1,7 +1,8 @@
 #pragma once
 #include "xplum_model/taifex_msg_proto/_define_cxx.h"
 
-namespace xplum_model::taifex_msg_proto::message_field::enumerate {
+namespace xplum_model::taifex_msg_proto::message_field::enumerate
+{
 enum class MessageType : type::uint08;
 enum class system_type : type::uint08;
 enum class EncryptMethod : type::uint08;
@@ -23,7 +24,8 @@ enum class target_id : type::uint08;
 enum class protocol_type : type::uint08;
 }
 
-enum class xplum_model::taifex_msg_proto::message_field::enumerate::MessageType : xplum_model::taifex_msg_proto::type::uint08 {
+enum class xplum_model::taifex_msg_proto::message_field::enumerate::MessageType : xplum_model::taifex_msg_proto::type::uint08
+{
   // LxxLayer
   L10 = 10,
   L20 = 20,
@@ -51,29 +53,34 @@ enum class xplum_model::taifex_msg_proto::message_field::enumerate::MessageType 
   R06 = 106,
 };
 
-enum class xplum_model::taifex_msg_proto::message_field::enumerate::system_type : xplum_model::taifex_msg_proto::type::uint08 {
+enum class xplum_model::taifex_msg_proto::message_field::enumerate::system_type : xplum_model::taifex_msg_proto::type::uint08
+{
   INT_10_OPTIONS_REGULAR_MARKET_HOURS = 10,
   INT_11_OPTIONS_AFTER_MARKET_HOURS = 11,
   INT_20_FUTURES_REGULAR_MARKET_HOURS = 20,
   INT_21_FUTURES_AFTER_MARKET_HOURS = 21,
 };
 
-enum class xplum_model::taifex_msg_proto::message_field::enumerate::EncryptMethod : xplum_model::taifex_msg_proto::type::uint08 {
+enum class xplum_model::taifex_msg_proto::message_field::enumerate::EncryptMethod : xplum_model::taifex_msg_proto::type::uint08
+{
   UNENCRYPTED = 0,
 };
 
-enum class xplum_model::taifex_msg_proto::message_field::enumerate::is_eof : xplum_model::taifex_msg_proto::type::uint08 {
+enum class xplum_model::taifex_msg_proto::message_field::enumerate::is_eof : xplum_model::taifex_msg_proto::type::uint08
+{
   NO = 0,
   END_OF_FILE = 1,
 };
 
-enum class xplum_model::taifex_msg_proto::message_field::enumerate::SubscriptionRequestType : xplum_model::taifex_msg_proto::type::uint08 {
+enum class xplum_model::taifex_msg_proto::message_field::enumerate::SubscriptionRequestType : xplum_model::taifex_msg_proto::type::uint08
+{
   CURRENT_STATUS = 0,
   CURRENT_SUBSEQUENT_CHANGES = 1,
   CANCEL_STATUS_SUBSCRIPTION = 2,
 };
 
-enum class xplum_model::taifex_msg_proto::message_field::enumerate::TradeStatus : xplum_model::taifex_msg_proto::type::uint08 {
+enum class xplum_model::taifex_msg_proto::message_field::enumerate::TradeStatus : xplum_model::taifex_msg_proto::type::uint08
+{
   UNKNOWN = 0,
   HALTED = 1,
   OPEN = 2,
@@ -82,7 +89,8 @@ enum class xplum_model::taifex_msg_proto::message_field::enumerate::TradeStatus 
   NON_CANCEL_PERIOD = 5,
 };
 
-enum class xplum_model::taifex_msg_proto::message_field::enumerate::ExecType : xplum_model::taifex_msg_proto::type::char0 {
+enum class xplum_model::taifex_msg_proto::message_field::enumerate::ExecType : xplum_model::taifex_msg_proto::type::char0
+{
   CHAR_0_NEW = '0',
   CHAR_4_CANCEL = '4',
   CHAR_5_DECREASE = '5',
@@ -91,32 +99,37 @@ enum class xplum_model::taifex_msg_proto::message_field::enumerate::ExecType : x
   CHAR_I_QUERY = 'I',
 };
 
-enum class xplum_model::taifex_msg_proto::message_field::enumerate::symbol_type : xplum_model::taifex_msg_proto::type::uint08 {
+enum class xplum_model::taifex_msg_proto::message_field::enumerate::symbol_type : xplum_model::taifex_msg_proto::type::uint08
+{
   R01_NUM = 1,
   R01_TEXT = 2,
   R31_NUM = 3,
   R31_TEXT = 4,
 };
 
-enum class xplum_model::taifex_msg_proto::message_field::enumerate::Side : xplum_model::taifex_msg_proto::type::uint08 {
+enum class xplum_model::taifex_msg_proto::message_field::enumerate::Side : xplum_model::taifex_msg_proto::type::uint08
+{
   BUY = 1,
   SELL = 2,
 };
 
-enum class xplum_model::taifex_msg_proto::message_field::enumerate::OrdType : xplum_model::taifex_msg_proto::type::uint08 {
+enum class xplum_model::taifex_msg_proto::message_field::enumerate::OrdType : xplum_model::taifex_msg_proto::type::uint08
+{
   MARKET = 1,
   LIMIT = 2,
   MWP = 3,
 };
 
-enum class xplum_model::taifex_msg_proto::message_field::enumerate::TimeInForce : xplum_model::taifex_msg_proto::type::uint08 {
+enum class xplum_model::taifex_msg_proto::message_field::enumerate::TimeInForce : xplum_model::taifex_msg_proto::type::uint08
+{
   FOK = 4,
   IOC = 3,
   ROD = 0,
   QUOTE_AUTOMATICALLY_CANCELLED_AFTER_A_PERIOD_OF_TIME = 8,
 };
 
-enum class xplum_model::taifex_msg_proto::message_field::enumerate::PositionEffect : xplum_model::taifex_msg_proto::type::char0 {
+enum class xplum_model::taifex_msg_proto::message_field::enumerate::PositionEffect : xplum_model::taifex_msg_proto::type::char0
+{
   CHAR_O_OPEN = 'O',
   CHAR_C_CLOSE = 'C',
   CHAR_D_DAYTRADE = 'D',
@@ -125,7 +138,8 @@ enum class xplum_model::taifex_msg_proto::message_field::enumerate::PositionEffe
   CHAR_7_OFFSET_BY_FCM = '7',
 };
 
-enum class xplum_model::taifex_msg_proto::message_field::enumerate::order_source : xplum_model::taifex_msg_proto::type::char0 {
+enum class xplum_model::taifex_msg_proto::message_field::enumerate::order_source : xplum_model::taifex_msg_proto::type::char0
+{
   CHAR_D_Leased_Line_or_VPN_or_Closed_private_network = 'D',
   CHAR_A_API = 'A',
   CHAR_M_Mobile_device = 'M',
@@ -135,13 +149,15 @@ enum class xplum_model::taifex_msg_proto::message_field::enumerate::order_source
   CHAR_G_writing_telephone_telegram = 'G',
 };
 
-enum class xplum_model::taifex_msg_proto::message_field::enumerate::leg_side : xplum_model::taifex_msg_proto::type::uint08 {
+enum class xplum_model::taifex_msg_proto::message_field::enumerate::leg_side : xplum_model::taifex_msg_proto::type::uint08
+{
   SINGLE_ORDER = 0,
   BUY = 1,
   SELL = 2,
 };
 
-enum class xplum_model::taifex_msg_proto::message_field::enumerate::target_id : xplum_model::taifex_msg_proto::type::uint08 {
+enum class xplum_model::taifex_msg_proto::message_field::enumerate::target_id : xplum_model::taifex_msg_proto::type::uint08
+{
   INT_04_FCM = 4,
   INT_08_CLEARING_MEMBER_ORDER_STATUS_REPORT = 8,
   INT_18_CLEARING_MEMBER_ORDER_STATUS_REPORT = 18,
@@ -151,7 +167,8 @@ enum class xplum_model::taifex_msg_proto::message_field::enumerate::target_id : 
   INT_13_EXECUTION_REPORT_INCLUDING_HEAD_OFFICE_AND_BRANCH_OFFICES = 13,
 };
 
-enum class xplum_model::taifex_msg_proto::message_field::enumerate::protocol_type : xplum_model::taifex_msg_proto::type::uint08 {
+enum class xplum_model::taifex_msg_proto::message_field::enumerate::protocol_type : xplum_model::taifex_msg_proto::type::uint08
+{
   RESERVED = 0,
   TMP = 1,
   FIX = 2,

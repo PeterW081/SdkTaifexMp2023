@@ -1,13 +1,16 @@
 #pragma once
 #include "xplum_model/taifex_msg_proto/_define_cxx.h"
 
-namespace xplum_sdkit::taifex_msg_proto {
+namespace xplum_sdkit::taifex_msg_proto
+{
 namespace type = xplum_model::taifex_msg_proto::type;
-namespace ancestor {
+namespace ancestor
+{
 class CounterMsgSeqNumV;
 class CounterOrderSeqV;
 }
-namespace kitbag {
+namespace kitbag
+{
 // Counter: MsgSeqNum
 using CounterMsgSeqNumV = ancestor::CounterMsgSeqNumV;
 class CounterMsgSeqNumSimple;

@@ -1,8 +1,7 @@
 #pragma once
-#include "xplum_sdkit/taifex_msg_proto/fsm/fsm_msg_transfer_flow.h-01declaration.h"
-#include "xplum_sdkit/taifex_msg_proto/fsm/fsm_msg_transfer_flow.h-02definition.h"
-
-namespace xplum_sdkit::taifex_msg_proto::fsm::usage {
-using FsmMsgTransferFlowClient = fsm_msg_transfer_flow::construction::FsmBack::MsgTransferFlowClient;
-using FsmMsgTransferFlowServer = fsm_msg_transfer_flow::construction::FsmBack::MsgTransferFlowServer;
-}
+// #include "./fsm_msg_transfer_flow.cc"
+#include "./fsm_msg_transfer_flow.cc-01declaration.cc"
+#include "./fsm_msg_transfer_flow.cc-02definition.cc"
+#include "./fsm_msg_transfer_flow.cc-02definition.cc-implement.cc"
+#include "./fsm_msg_transfer_flow.cc"
+#pragma

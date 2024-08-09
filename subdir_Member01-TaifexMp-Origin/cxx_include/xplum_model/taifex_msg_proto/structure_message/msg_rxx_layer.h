@@ -4,7 +4,8 @@
 #include "xplum_model/taifex_msg_proto/structure_message_field/msg_field.h"
 #include "xplum_model/taifex_msg_proto/structure_message_field/msg_field_enumerate.h"
 
-namespace xplum_model::taifex_msg_proto::message {
+namespace xplum_model::taifex_msg_proto::message
+{
 // RxxLayer - 連線狀態維護
 struct R04;
 struct R05;
@@ -25,11 +26,12 @@ struct R06; // TODO
 
 /// xplum::taifex_msg_proto::message::R04
 #define RXX R04
-struct xplum_model::taifex_msg_proto::message::RXX {
+struct xplum_model::taifex_msg_proto::message::RXX
+{
   /* R04_FieldNo01 */ message_field::hdr hdr = {
-      .msg_length = sizeof(RXX) - mt_sizeof_msg_content::SIZE_OUT_OF_MSG_LENGTH,
-      .MsgSeqNum = 0,
-      .MessageType = xplum::ToEnumUnderlyingValue(message_field::enumerate::MessageType::RXX),
+    .msg_length = sizeof (RXX) - mt_sizeof_msg_content::SIZE_OUT_OF_MSG_LENGTH,
+    .MsgSeqNum = 0,
+    .MessageType = xplum::ToEnumUnderlyingValue (message_field::enumerate::MessageType::RXX),
   };
   /* R04_FieldNo02 */ message_field::uint8 status_code;
   /* R04_FieldNo03 */ message_field::uint8 CheckSum;
@@ -38,11 +40,12 @@ struct xplum_model::taifex_msg_proto::message::RXX {
 
 /// xplum::taifex_msg_proto::message::R05
 #define RXX R05
-struct xplum_model::taifex_msg_proto::message::RXX {
+struct xplum_model::taifex_msg_proto::message::RXX
+{
   /* R05_FieldNo01 */ message_field::hdr hdr = {
-      .msg_length = sizeof(RXX) - mt_sizeof_msg_content::SIZE_OUT_OF_MSG_LENGTH,
-      .MsgSeqNum = 0,
-      .MessageType = xplum::ToEnumUnderlyingValue(message_field::enumerate::MessageType::RXX),
+    .msg_length = sizeof (RXX) - mt_sizeof_msg_content::SIZE_OUT_OF_MSG_LENGTH,
+    .MsgSeqNum = 0,
+    .MessageType = xplum::ToEnumUnderlyingValue (message_field::enumerate::MessageType::RXX),
   };
   /* R05_FieldNo02 */ message_field::uint8 status_code;
   /* R05_FieldNo03 */ message_field::uint8 CheckSum;
@@ -51,11 +54,12 @@ struct xplum_model::taifex_msg_proto::message::RXX {
 
 /// xplum::taifex_msg_proto::message::R11
 #define RXX R11
-struct xplum_model::taifex_msg_proto::message::RXX {
+struct xplum_model::taifex_msg_proto::message::RXX
+{
   /* R11_FieldNo01 */ message_field::hdr hdr = {
-      .msg_length = sizeof(RXX) - mt_sizeof_msg_content::SIZE_OUT_OF_MSG_LENGTH,
-      .MsgSeqNum = 0,
-      .MessageType = xplum::ToEnumUnderlyingValue(message_field::enumerate::MessageType::RXX),
+    .msg_length = sizeof (RXX) - mt_sizeof_msg_content::SIZE_OUT_OF_MSG_LENGTH,
+    .MsgSeqNum = 0,
+    .MessageType = xplum::ToEnumUnderlyingValue (message_field::enumerate::MessageType::RXX),
   };
   /* R11_FieldNo02 */ message_field::uint8 status_code;
   /* R11_FieldNo03 */ message_field::uint16 TradeReqID;
@@ -67,11 +71,12 @@ struct xplum_model::taifex_msg_proto::message::RXX {
 
 /// xplum::taifex_msg_proto::message::R12
 #define RXX R12
-struct xplum_model::taifex_msg_proto::message::RXX {
+struct xplum_model::taifex_msg_proto::message::RXX
+{
   /* R12_FieldNo01 */ message_field::hdr hdr = {
-      .msg_length = sizeof(RXX) - mt_sizeof_msg_content::SIZE_OUT_OF_MSG_LENGTH,
-      .MsgSeqNum = 0,
-      .MessageType = xplum::ToEnumUnderlyingValue(message_field::enumerate::MessageType::RXX),
+    .msg_length = sizeof (RXX) - mt_sizeof_msg_content::SIZE_OUT_OF_MSG_LENGTH,
+    .MsgSeqNum = 0,
+    .MessageType = xplum::ToEnumUnderlyingValue (message_field::enumerate::MessageType::RXX),
   };
   /* R12_FieldNo02 */ message_field::uint8 status_code;
   /* R12_FieldNo03 */ message_field::uint16 TradeReqID;
@@ -83,11 +88,12 @@ struct xplum_model::taifex_msg_proto::message::RXX {
 
 /// xplum::taifex_msg_proto::message::R01
 #define RXX R01
-struct xplum_model::taifex_msg_proto::message::RXX {
+struct xplum_model::taifex_msg_proto::message::RXX
+{
   /* R01_FieldNo01 */ message_field::hdr hdr = {
-      .msg_length = sizeof(RXX) - mt_sizeof_msg_content::SIZE_OUT_OF_MSG_LENGTH,
-      .MsgSeqNum = 0,
-      .MessageType = xplum::ToEnumUnderlyingValue(message_field::enumerate::MessageType::RXX),
+    .msg_length = sizeof (RXX) - mt_sizeof_msg_content::SIZE_OUT_OF_MSG_LENGTH,
+    .MsgSeqNum = 0,
+    .MessageType = xplum::ToEnumUnderlyingValue (message_field::enumerate::MessageType::RXX),
   };
   /* R01_FieldNo02 */ message_field::char0 ExecType;
   /* R01_FieldNo03 */ message_field::uint16 cm_id;
@@ -106,18 +112,19 @@ struct xplum_model::taifex_msg_proto::message::RXX {
   /* R01_FieldNo16 */ message_field::uint8 TimeInForce;
   /* R01_FieldNo17 */ message_field::char0 PositionEffect;
   /* R01_FieldNo18 */ message_field::char0 order_source;
-  /* R01_FieldNo19 */ message_field::char0 info_source[message_field::sizeof_array::Order::M_SIZEOF_ARR_0_INFO_SOURCE] = {'9', '9', '9'};
+  /* R01_FieldNo19 */ message_field::char0 info_source[message_field::sizeof_array::Order::M_SIZEOF_ARR_0_INFO_SOURCE] = { '9', '9', '9' };
   /* R01_FieldNo20 */ message_field::uint8 CheckSum;
 };
 #undef RXX
 
 /// xplum::taifex_msg_proto::message::R02
 #define RXX R02
-struct xplum_model::taifex_msg_proto::message::RXX {
+struct xplum_model::taifex_msg_proto::message::RXX
+{
   /* R02_FieldNo01 */ message_field::hdr hdr = {
-      .msg_length = sizeof(RXX) - mt_sizeof_msg_content::SIZE_OUT_OF_MSG_LENGTH,
-      .MsgSeqNum = 0,
-      .MessageType = xplum::ToEnumUnderlyingValue(message_field::enumerate::MessageType::RXX),
+    .msg_length = sizeof (RXX) - mt_sizeof_msg_content::SIZE_OUT_OF_MSG_LENGTH,
+    .MsgSeqNum = 0,
+    .MessageType = xplum::ToEnumUnderlyingValue (message_field::enumerate::MessageType::RXX),
   };
   /* R02_FieldNo02 */ message_field::uint8 status_code;
   /* R02_FieldNo03 */ message_field::char0 ExecType;
@@ -157,11 +164,12 @@ struct xplum_model::taifex_msg_proto::message::RXX {
 
 /// xplum::taifex_msg_proto::message::R03
 #define RXX R03
-struct xplum_model::taifex_msg_proto::message::RXX {
+struct xplum_model::taifex_msg_proto::message::RXX
+{
   /* R03_FieldNo01 */ message_field::hdr hdr = {
-      .msg_length = sizeof(RXX) - mt_sizeof_msg_content::SIZE_OUT_OF_MSG_LENGTH,
-      .MsgSeqNum = 0,
-      .MessageType = xplum::ToEnumUnderlyingValue(message_field::enumerate::MessageType::RXX),
+    .msg_length = sizeof (RXX) - mt_sizeof_msg_content::SIZE_OUT_OF_MSG_LENGTH,
+    .MsgSeqNum = 0,
+    .MessageType = xplum::ToEnumUnderlyingValue (message_field::enumerate::MessageType::RXX),
   };
   /* R03_FieldNo02 */ message_field::uint8 status_code;
   /* R03_FieldNo03 */ message_field::char0 ExecType;

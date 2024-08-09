@@ -1,26 +1,29 @@
 #pragma once
 #include <boost/asio.hpp>
 
-namespace ext::boost_asio0 {
+namespace ext::boost_asio0
+{
 enum class EumeTcpEndpointSide;
 class EzV2_TcpBothEndpoint_A;
 }
 
 enum class             //
     ext::boost_asio0:: //
-    EumeTcpEndpointSide {
-      NULL0 = 0,
-      CLIENT,
-      SERVER,
-    };
+    EumeTcpEndpointSide
+{
+  NULL0 = 0,
+  CLIENT,
+  SERVER,
+};
 
 class                  //
     ext::boost_asio0:: //
-    EzV2_TcpBothEndpoint_A {
+    EzV2_TcpBothEndpoint_A
+{
 public:
-  explicit EzV2_TcpBothEndpoint_A() = delete;
-  explicit EzV2_TcpBothEndpoint_A(const EzV2_TcpBothEndpoint_A &inctance) = delete;
-  auto operator=(const EzV2_TcpBothEndpoint_A &inctance) -> EzV2_TcpBothEndpoint_A & = delete;
+  explicit EzV2_TcpBothEndpoint_A () = delete;
+  explicit EzV2_TcpBothEndpoint_A (const EzV2_TcpBothEndpoint_A &inctance) = delete;
+  auto operator= (const EzV2_TcpBothEndpoint_A &inctance) -> EzV2_TcpBothEndpoint_A & = delete;
 
 protected:
   // Both
@@ -35,14 +38,16 @@ protected:
   const EumeTcpEndpointSide m_side;
   std::unique_ptr<TYPE_asio_io_context> m_io_context;
   std::unique_ptr<TYPE_asio_socket> m_socket;
-  struct {
+  struct
+  {
     std::unique_ptr<TYPE_asio_resolver> m_resolver;
     std::string m_server_host;
     std::string m_server_port;
   } m_plugin_client;
-  struct {
+  struct
+  {
     std::unique_ptr<TYPE_asio_acceptor> m_acceptor;
   } m_plugin_server;
-  explicit EzV2_TcpBothEndpoint_A(EumeTcpEndpointSide, std::string_view, std::string_view); // side, host, port,
-  ~EzV2_TcpBothEndpoint_A();
+  explicit EzV2_TcpBothEndpoint_A (EumeTcpEndpointSide, std::string_view, std::string_view); // side, host, port,
+  ~EzV2_TcpBothEndpoint_A ();
 };
