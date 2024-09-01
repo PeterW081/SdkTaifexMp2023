@@ -6,10 +6,10 @@
 
 namespace xplum_sdkit::taifex_msg_proto::ez_view
 {
-extern auto FX_GET_MSG_LENGTH_IN_ORIGIN_MSG (void *data) -> xplum_model::taifex_msg_proto::message_field::uint16 &;
-extern auto FX_GET_MSG_LENGTH_IN_ORIGIN_MSG_1CONST (void *data) -> const xplum_model::taifex_msg_proto::message_field::uint16 &;
-extern auto FX_GET_MSG_TYPE_IN_ORIGIN_MSG_1CONST (void *data) -> const view::message_field::enumerate::MsgType;
-extern auto FX_GET_SYMBOL_TEXT_IN_VIEW_MSG_FIELD (view::message_field::SymbolX &symbol_x) -> view::message_field::origin::char0 (&)[xplum_model::taifex_msg_proto::message_field::sizeof_array::Symbol::M_SIZEOF_ARR_0_TEXT_SYMBOL];
+extern auto FX_GET_MSG_LENGTH_IN_ORIGIN_MSG(void *data) -> xplum_model::taifex_msg_proto::message_field::uint16 &;
+extern auto FX_GET_MSG_LENGTH_IN_ORIGIN_MSG_1CONST(void *data) -> const xplum_model::taifex_msg_proto::message_field::uint16 &;
+extern auto FX_GET_MSG_TYPE_IN_ORIGIN_MSG_1CONST(void *data) -> const view::message_field::enumerate::MsgType;
+extern auto FX_GET_SYMBOL_TEXT_IN_VIEW_MSG_FIELD(view::message_field::SymbolX &symbol_x) -> view::message_field::origin::char0 (&)[xplum_model::taifex_msg_proto::message_field::sizeof_array::Symbol::M_SIZEOF_ARR_0_TEXT_SYMBOL];
 }
 
 namespace xplum_sdkit::taifex_msg_proto::algorithm

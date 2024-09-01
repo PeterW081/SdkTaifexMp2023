@@ -9,7 +9,8 @@
 
 namespace boost0::msm
 {
-template <typename FSM_CTRL_HANDLE> struct FsmElementWrapWithCtrlHandle_A;
+template <typename FSM_CTRL_HANDLE>
+struct FsmElementWrapWithCtrlHandle_A;
 }
 
 template <typename FSM_CTRL_HANDLE> //
@@ -18,14 +19,15 @@ struct                              //
     FsmElementWrapWithCtrlHandle_A  //
     : FsmElementWrapSimple
 {
-  template <typename CRTP_SELF, typename FSM_STATE_TRANSITION_TABLE, typename FSM_STATE_TRANSITION_TABLE_HEAD> struct FsmFront;
-  struct FsmGuard;
-  struct FsmAction;
+    template <typename CRTP_SELF, typename FSM_STATE_TRANSITION_TABLE, typename FSM_STATE_TRANSITION_TABLE_HEAD>
+    struct FsmFront;
+    struct FsmGuard;
+    struct FsmAction;
 
-private:
-  using SUPER = FsmElementWrapSimple;
-  struct FsmCtrlHandlePlugin;
-  struct FsmCtrlHandleParser;
+  private:
+    using SUPER = FsmElementWrapSimple;
+    struct FsmCtrlHandlePlugin;
+    struct FsmCtrlHandleParser;
 };
 
 template <typename FSM_CTRL_HANDLE> //
@@ -33,12 +35,12 @@ struct                              //
     boost0::msm::                   //
     FsmElementWrapWithCtrlHandle_A<FSM_CTRL_HANDLE>::FsmCtrlHandlePlugin
 {
-public:
-  friend FsmCtrlHandleParser;
-  using FsmCtrlHandle = FSM_CTRL_HANDLE;
+  public:
+    friend FsmCtrlHandleParser;
+    using FsmCtrlHandle = FSM_CTRL_HANDLE;
 
-protected:
-  std::shared_ptr<FsmCtrlHandle> m_ctrl;
+  protected:
+    std::shared_ptr<FsmCtrlHandle> m_ctrl;
 };
 
 template <typename FSM_CTRL_HANDLE> //
@@ -46,7 +48,7 @@ struct                              //
     boost0::msm::                   //
     FsmElementWrapWithCtrlHandle_A<FSM_CTRL_HANDLE>::FsmCtrlHandleParser
 {
-  static auto FX_FROM_FSM_GET_CTRL_HANDLE (FsmCtrlHandlePlugin &) -> std::shared_ptr<FSM_CTRL_HANDLE>;
+    static auto FX_FROM_FSM_GET_CTRL_HANDLE(FsmCtrlHandlePlugin &) -> std::shared_ptr<FSM_CTRL_HANDLE>;
 };
 
 template <typename FSM_CTRL_HANDLE>                                                                          //
@@ -58,7 +60,8 @@ struct                                                                          
       FsmCtrlHandlePlugin,
       FsmCtrlHandleParser
 {
-  template <typename FSM, typename EVENT> auto on_entry (const EVENT &, FSM &) -> void;
+    template <typename FSM, typename EVENT>
+    auto on_entry(const EVENT &, FSM &) -> void;
 };
 
 template <typename FSM_CTRL_HANDLE>                           //

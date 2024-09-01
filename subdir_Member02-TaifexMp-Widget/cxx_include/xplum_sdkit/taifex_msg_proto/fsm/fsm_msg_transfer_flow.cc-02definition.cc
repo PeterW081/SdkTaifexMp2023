@@ -17,19 +17,20 @@ struct                                                                 //
     xplum_sdkit::taifex_msg_proto::fsm_msg_transfer_flow::_ns_ignore:: //
     FsmElementWrapImpl
 {
-  struct FsmActionWithCtrlHandle;
-  struct FsmGuardWithCtrlHandle;
+    struct FsmActionWithCtrlHandle;
+    struct FsmGuardWithCtrlHandle;
 
-private:
-  struct CtrlHandle;
-  using FsmElementWrap = boost0::msm::FsmElementWrapWithCtrlHandle_A<CtrlHandle>;
-  using FsmGuard = FsmElementWrap::FsmGuard;
+  private:
+    struct CtrlHandle;
+    using FsmElementWrap = boost0::msm::FsmElementWrapWithCtrlHandle_A<CtrlHandle>;
+    using FsmGuard = FsmElementWrap::FsmGuard;
 
-public:
-  template <typename CRTP_SELF, typename FSM_STATE_TRANSITION_TABLE, typename FSM_STATE_TRANSITION_TABLE_HEAD> using FsmFront = FsmElementWrap::FsmFront<CRTP_SELF, FSM_STATE_TRANSITION_TABLE, FSM_STATE_TRANSITION_TABLE_HEAD>;
-  using FsmState = FsmElementWrap::FsmState;
-  using FsmEvent = FsmElementWrap::FsmEvent;
-  using FsmAction = FsmElementWrap::FsmAction;
+  public:
+    template <typename CRTP_SELF, typename FSM_STATE_TRANSITION_TABLE, typename FSM_STATE_TRANSITION_TABLE_HEAD>
+    using FsmFront = FsmElementWrap::FsmFront<CRTP_SELF, FSM_STATE_TRANSITION_TABLE, FSM_STATE_TRANSITION_TABLE_HEAD>;
+    using FsmState = FsmElementWrap::FsmState;
+    using FsmEvent = FsmElementWrap::FsmEvent;
+    using FsmAction = FsmElementWrap::FsmAction;
 };
 
 struct                                                                 //
@@ -249,11 +250,12 @@ struct                                                                 //
     FsmElementWrapImpl::FsmGuardWithCtrlHandle                         //
     : _ns_ignore::FsmElementWrapImpl::FsmGuard
 {
-  template <typename FSM, typename EVENT, typename SRCE, typename TAGT> auto operator() (const EVENT &, FSM &, SRCE &, TAGT &) -> bool;
+    template <typename FSM, typename EVENT, typename SRCE, typename TAGT>
+    auto operator()(const EVENT &, FSM &, SRCE &, TAGT &) -> bool;
 
-protected:
-  using CtrlHandle = CtrlHandle;
-  virtual auto fx_operator (CtrlHandle &) -> bool = 0;
+  protected:
+    using CtrlHandle = CtrlHandle;
+    virtual auto fx_operator(CtrlHandle &) -> bool = 0;
 };
 
 /// FsmAction
@@ -264,12 +266,13 @@ struct                                                                 //
     FsmElementWrapImpl::FsmActionWithCtrlHandle                        //
     : _ns_ignore::FsmElementWrapImpl::FsmAction
 {
-  template <typename FSM, typename EVENT, typename SRCE, typename TAGT> auto operator() (const EVENT &, FSM &, SRCE &, TAGT &) -> void;
+    template <typename FSM, typename EVENT, typename SRCE, typename TAGT>
+    auto operator()(const EVENT &, FSM &, SRCE &, TAGT &) -> void;
 
-protected:
-  using CtrlHandle = CtrlHandle;
-  virtual auto fx_operator_tcp_client (CtrlHandle &) -> void = 0;
-  virtual auto fx_operator_tcp_server (CtrlHandle &) -> void = 0;
+  protected:
+    using CtrlHandle = CtrlHandle;
+    virtual auto fx_operator_tcp_client(CtrlHandle &) -> void = 0;
+    virtual auto fx_operator_tcp_server(CtrlHandle &) -> void = 0;
 };
 
 struct                                                              //
@@ -277,7 +280,8 @@ struct                                                              //
     FsmAction::AssertFsmStateOrFsmNoTransition                      //
     : _ns_ignore::FsmElementWrapImpl::FsmAction
 {
-  template <typename FSM, typename EVENT, typename SRCE, typename TAGT> auto operator() (const EVENT &, FSM &, SRCE &, TAGT &) -> void;
+    template <typename FSM, typename EVENT, typename SRCE, typename TAGT>
+    auto operator()(const EVENT &, FSM &, SRCE &, TAGT &) -> void;
 };
 
 struct                                                              //
@@ -285,8 +289,8 @@ struct                                                              //
     FsmAction::DoTransferReady                                      //
     : _ns_ignore::FsmElementWrapImpl::FsmActionWithCtrlHandle
 {
-  auto fx_operator_tcp_client (CtrlHandle &) -> void override;
-  auto fx_operator_tcp_server (CtrlHandle &) -> void override;
+    auto fx_operator_tcp_client(CtrlHandle &) -> void override;
+    auto fx_operator_tcp_server(CtrlHandle &) -> void override;
 };
 
 struct                                                              //
@@ -294,8 +298,8 @@ struct                                                              //
     FsmAction::DoTransfer_L10_FromClient                            //
     : _ns_ignore::FsmElementWrapImpl::FsmActionWithCtrlHandle
 {
-  auto fx_operator_tcp_client (CtrlHandle &) -> void override;
-  auto fx_operator_tcp_server (CtrlHandle &) -> void override;
+    auto fx_operator_tcp_client(CtrlHandle &) -> void override;
+    auto fx_operator_tcp_server(CtrlHandle &) -> void override;
 };
 
 struct                                                              //
@@ -303,8 +307,8 @@ struct                                                              //
     FsmAction::DoTransfer_L10_FromServer                            //
     : _ns_ignore::FsmElementWrapImpl::FsmActionWithCtrlHandle
 {
-  auto fx_operator_tcp_client (CtrlHandle &) -> void override;
-  auto fx_operator_tcp_server (CtrlHandle &) -> void override;
+    auto fx_operator_tcp_client(CtrlHandle &) -> void override;
+    auto fx_operator_tcp_server(CtrlHandle &) -> void override;
 };
 
 struct                                                              //
@@ -312,8 +316,8 @@ struct                                                              //
     FsmAction::DoTransfer_L20                                       //
     : _ns_ignore::FsmElementWrapImpl::FsmActionWithCtrlHandle
 {
-  auto fx_operator_tcp_client (CtrlHandle &) -> void override;
-  auto fx_operator_tcp_server (CtrlHandle &) -> void override;
+    auto fx_operator_tcp_client(CtrlHandle &) -> void override;
+    auto fx_operator_tcp_server(CtrlHandle &) -> void override;
 };
 
 struct                                                              //
@@ -321,8 +325,8 @@ struct                                                              //
     FsmAction::DoTransfer_L30                                       //
     : _ns_ignore::FsmElementWrapImpl::FsmActionWithCtrlHandle
 {
-  auto fx_operator_tcp_client (CtrlHandle &) -> void override;
-  auto fx_operator_tcp_server (CtrlHandle &) -> void override;
+    auto fx_operator_tcp_client(CtrlHandle &) -> void override;
+    auto fx_operator_tcp_server(CtrlHandle &) -> void override;
 };
 
 struct                                                              //
@@ -330,8 +334,8 @@ struct                                                              //
     FsmAction::DoTransfer_L40                                       //
     : _ns_ignore::FsmElementWrapImpl::FsmActionWithCtrlHandle
 {
-  auto fx_operator_tcp_client (CtrlHandle &) -> void override;
-  auto fx_operator_tcp_server (CtrlHandle &) -> void override;
+    auto fx_operator_tcp_client(CtrlHandle &) -> void override;
+    auto fx_operator_tcp_server(CtrlHandle &) -> void override;
 };
 
 struct                                                              //
@@ -339,8 +343,8 @@ struct                                                              //
     FsmAction::DoTransfer_L42                                       //
     : _ns_ignore::FsmElementWrapImpl::FsmActionWithCtrlHandle
 {
-  auto fx_operator_tcp_client (CtrlHandle &) -> void override;
-  auto fx_operator_tcp_server (CtrlHandle &) -> void override;
+    auto fx_operator_tcp_client(CtrlHandle &) -> void override;
+    auto fx_operator_tcp_server(CtrlHandle &) -> void override;
 };
 
 struct                                                              //
@@ -348,8 +352,8 @@ struct                                                              //
     FsmAction::DoTransfer_L60                                       //
     : _ns_ignore::FsmElementWrapImpl::FsmActionWithCtrlHandle
 {
-  auto fx_operator_tcp_client (CtrlHandle &) -> void override;
-  auto fx_operator_tcp_server (CtrlHandle &) -> void override;
+    auto fx_operator_tcp_client(CtrlHandle &) -> void override;
+    auto fx_operator_tcp_server(CtrlHandle &) -> void override;
 };
 
 struct                                                              //
@@ -357,14 +361,14 @@ struct                                                              //
     FsmAction::DoTransfer_OR_L41_L50                                //
     : _ns_ignore::FsmElementWrapImpl::FsmActionWithCtrlHandle
 {
-  auto fx_operator_tcp_client (CtrlHandle &) -> void override;
-  auto fx_operator_tcp_server (CtrlHandle &) -> void override;
+    auto fx_operator_tcp_client(CtrlHandle &) -> void override;
+    auto fx_operator_tcp_server(CtrlHandle &) -> void override;
 
-protected:
-  auto fx_transfer_L41_write_prepwork (CtrlHandle &) -> void;
-  auto fx_transfer_L41_reade_postwork (CtrlHandle &) -> void;
-  auto fx_transfer_L50_write_prepwork (CtrlHandle &) -> void;
-  auto fx_transfer_L50_reade_postwork (CtrlHandle &) -> void;
+  protected:
+    auto fx_transfer_L41_write_prepwork(CtrlHandle &) -> void;
+    auto fx_transfer_L41_reade_postwork(CtrlHandle &) -> void;
+    auto fx_transfer_L50_write_prepwork(CtrlHandle &) -> void;
+    auto fx_transfer_L50_reade_postwork(CtrlHandle &) -> void;
 };
 
 /// FsmMachine
@@ -375,8 +379,8 @@ struct                                                                   //
     xplum_sdkit::taifex_msg_proto::fsm_msg_transfer_flow::construction:: //
     FsmFactory::FsmFactory0
 {
-  struct FsmFront;
-  using FsmBack = boost::msm::back::state_machine<FsmFront>;
+    struct FsmFront;
+    using FsmBack = boost::msm::back::state_machine<FsmFront>;
 };
 
 template <typename FSM_STATE_TRANSITION_TABLE, typename FSM_STATE_TRANSITION_TABLE_HEAD>
@@ -409,10 +413,10 @@ struct                                                                   //
     FsmBack::MsgTransferFlowClient                                       //
     : FsmFactory::MsgTransferFlow::FsmBack
 {
-  using Event = element::FsmEvent;
-  using Unity = xplum_sdkit::taifex_msg_proto::kitbag::UnityTcpSession;
-  explicit MsgTransferFlowClient (std::shared_ptr<Unity>);
-  auto fx_is_hold_L41 () -> bool;
+    using Event = element::FsmEvent;
+    using Unity = xplum_sdkit::taifex_msg_proto::kitbag::UnityTcpSession;
+    explicit MsgTransferFlowClient(std::shared_ptr<Unity>);
+    auto fx_is_hold_L41() -> bool;
 };
 
 struct                                                                   //
@@ -420,8 +424,8 @@ struct                                                                   //
     FsmBack::MsgTransferFlowServer                                       //
     : MsgTransferFlowClient
 {
-  using Event = element::FsmEvent;
-  using Unity = xplum_sdkit::taifex_msg_proto::kitbag::UnityTcpSession;
-  using UnityReServer = xplum_sdkit::taifex_msg_proto::kitbag::UnityTcpSessionPluginReServer_MOCK;
-  explicit MsgTransferFlowServer (std::shared_ptr<Unity>, std::shared_ptr<UnityReServer>);
+    using Event = element::FsmEvent;
+    using Unity = xplum_sdkit::taifex_msg_proto::kitbag::UnityTcpSession;
+    using UnityReServer = xplum_sdkit::taifex_msg_proto::kitbag::UnityTcpSessionPluginReServer_MOCK;
+    explicit MsgTransferFlowServer(std::shared_ptr<Unity>, std::shared_ptr<UnityReServer>);
 };

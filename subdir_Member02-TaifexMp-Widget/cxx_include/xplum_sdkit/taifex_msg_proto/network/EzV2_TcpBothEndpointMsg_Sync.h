@@ -16,18 +16,19 @@ class                                        //
     EzV2_TcpBothEndpointMsg_Sync             //
     : private ext::boost_asio0::EzV2_TcpBothEndpointWay01SyncSimple
 {
-public:
-  template <ext::boost_asio0::EumeTcpEndpointSide V, typename T> friend class ext::boost_asio0::EzV2_TcpBothEndpointWay01_V2;
+  public:
+    template <ext::boost_asio0::EumeTcpEndpointSide V, typename T>
+    friend class ext::boost_asio0::EzV2_TcpBothEndpointWay01_V2;
 
-public:
-  struct
-  {
-    bool is_log_data_hex_content = true;
-  } DEBUG_cfg;
+  public:
+    struct
+    {
+        bool is_log_data_hex_content = true;
+    } DEBUG_cfg;
 
-public:
-  explicit EzV2_TcpBothEndpointMsg_Sync (ext::boost_asio0::EumeTcpEndpointSide, std::string_view, std::string_view); // server_side, server_host, server_port
-  auto start (std::optional<std::chrono::seconds> = std::nullopt) -> bool;
-  auto write_msg (std::span<std::byte>, std::optional<std::chrono::seconds> = std::nullopt) -> type::TypeMsgLength;
-  auto reade_msg (std::span<std::byte>, std::optional<std::chrono::seconds> = std::nullopt) -> type::TypeMsgLength;
+  public:
+    explicit EzV2_TcpBothEndpointMsg_Sync(ext::boost_asio0::EumeTcpEndpointSide, std::string_view, std::string_view); // server_side, server_host, server_port
+    auto start(std::optional<std::chrono::seconds> = std::nullopt) -> bool;
+    auto write_msg(std::span<std::byte>, std::optional<std::chrono::seconds> = std::nullopt) -> type::TypeMsgLength;
+    auto reade_msg(std::span<std::byte>, std::optional<std::chrono::seconds> = std::nullopt) -> type::TypeMsgLength;
 };

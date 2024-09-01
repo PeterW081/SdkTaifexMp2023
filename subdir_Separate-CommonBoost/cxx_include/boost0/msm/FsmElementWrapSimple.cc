@@ -15,11 +15,12 @@ struct            //
     boost0::msm:: //
     FsmElementWrapSimple
 {
-  template <typename CRTP_SELF, typename FSM_STATE_TRANSITION_TABLE, typename FSM_STATE_TRANSITION_TABLE_HEAD> struct FsmFront;
-  struct FsmEvent;
-  struct FsmState;
-  struct FsmGuard;
-  struct FsmAction;
+    template <typename CRTP_SELF, typename FSM_STATE_TRANSITION_TABLE, typename FSM_STATE_TRANSITION_TABLE_HEAD>
+    struct FsmFront;
+    struct FsmEvent;
+    struct FsmState;
+    struct FsmGuard;
+    struct FsmAction;
 };
 
 #pragma clang diagnostic push
@@ -30,15 +31,18 @@ struct                             //
     FsmElementWrapSimple::FsmFront //
     : public boost::msm::front::state_machine_def<CRTP_SELF>
 {
-  // Base:
-  using initial_state = FSM_STATE_TRANSITION_TABLE_HEAD;
-  using transition_table = FSM_STATE_TRANSITION_TABLE;
-  template <typename FSM, typename EVENT> auto on_entry (const EVENT &, FSM &) -> void;
-  template <typename FSM, typename EVENT> auto no_transition (const EVENT &, FSM &, int) -> void;
-  template <typename FSM, typename EVENT> auto exception_caught (const EVENT &, FSM &, std::exception &e) -> void;
+    // Base:
+    using initial_state = FSM_STATE_TRANSITION_TABLE_HEAD;
+    using transition_table = FSM_STATE_TRANSITION_TABLE;
+    template <typename FSM, typename EVENT>
+    auto on_entry(const EVENT &, FSM &) -> void;
+    template <typename FSM, typename EVENT>
+    auto no_transition(const EVENT &, FSM &, int) -> void;
+    template <typename FSM, typename EVENT>
+    auto exception_caught(const EVENT &, FSM &, std::exception &e) -> void;
 #if (false)
-  // Extend:
-  using FsmBack = boost::msm::back::state_machine<CRTP_SELF>;
+    // Extend:
+    using FsmBack = boost::msm::back::state_machine<CRTP_SELF>;
 #endif
 };
 #pragma clang diagnostic pop
@@ -60,12 +64,14 @@ struct            //
     boost0::msm:: //
     FsmElementWrapSimple::FsmGuard
 {
-  template <typename FSM, typename EVENT, typename SRCE, typename TAGT> auto operator() (const EVENT &, FSM &, SRCE &, TAGT &) -> bool;
+    template <typename FSM, typename EVENT, typename SRCE, typename TAGT>
+    auto operator()(const EVENT &, FSM &, SRCE &, TAGT &) -> bool;
 };
 
 struct            //
     boost0::msm:: //
     FsmElementWrapSimple::FsmAction
 {
-  template <typename FSM, typename EVENT, typename SRCE, typename TAGT> auto operator() (const EVENT &, FSM &, SRCE &, TAGT &) -> void;
+    template <typename FSM, typename EVENT, typename SRCE, typename TAGT>
+    auto operator()(const EVENT &, FSM &, SRCE &, TAGT &) -> void;
 };

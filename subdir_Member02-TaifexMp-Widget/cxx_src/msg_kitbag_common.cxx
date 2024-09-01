@@ -6,66 +6,62 @@ namespace nscxx_root = xplum_sdkit::taifex_msg_proto::kitbag;
 
 // using xplum_sdkit::taifex_msg_proto::kitbag::CounterMsgSeqNumSimple;
 //
-auto
-nscxx_root::CounterMsgSeqNumSimple::storage_load0 (std::nullptr_t melon, ...) -> bool
+auto nscxx_root::CounterMsgSeqNumSimple::storage_load0(std::nullptr_t melon, ...) -> bool
 {
-  std::unique_ptr<type::uint32> *value;
+    std::unique_ptr<type::uint32> *value;
 
-  va_list (args);
-  va_start (args, melon);
-  value = va_arg (args, std::unique_ptr<type::uint32> *);
-  va_end (args);
+    va_list(args);
+    va_start(args, melon);
+    value = va_arg(args, std::unique_ptr<type::uint32> *);
+    va_end(args);
 
-  return this->storage_load (value);
+    return this->storage_load(value);
 }
-auto
-nscxx_root::CounterMsgSeqNumSimple::storage_save0 (std::nullptr_t melon, ...) const -> bool
+auto nscxx_root::CounterMsgSeqNumSimple::storage_save0(std::nullptr_t melon, ...) const -> bool
 {
-  std::unique_ptr<type::uint32> *value;
+    std::unique_ptr<type::uint32> *value;
 
-  va_list (args);
-  va_start (args, melon);
-  value = va_arg (args, std::unique_ptr<type::uint32> *);
-  va_end (args);
+    va_list(args);
+    va_start(args, melon);
+    value = va_arg(args, std::unique_ptr<type::uint32> *);
+    va_end(args);
 
-  return this->storage_save (value);
+    return this->storage_save(value);
 }
-auto
-nscxx_root::CounterMsgSeqNumSimple::storage_load (std::unique_ptr<type::uint32> *value) -> bool
+auto nscxx_root::CounterMsgSeqNumSimple::storage_load(std::unique_ptr<type::uint32> *value) -> bool
 {
-  if (value == nullptr)
+    if (value == nullptr)
     {
-      assert (!(value == nullptr));
-      return false;
+        assert(!(value == nullptr));
+        return false;
     }
 
-  std::unique_ptr<type::uint32> &value0 = *value;
-  if (value0 == nullptr)
+    std::unique_ptr<type::uint32> &value0 = *value;
+    if (value0 == nullptr)
     {
-      assert (!(value0.get () == nullptr));
-      return false;
+        assert(!(value0.get() == nullptr));
+        return false;
     }
 
-  auto total_lock = std::unique_lock (m_mutex_read_write);
-  this->m_data = *value0;
-  return true;
+    auto total_lock = std::unique_lock(m_mutex_read_write);
+    this->m_data = *value0;
+    return true;
 }
-auto
-nscxx_root::CounterMsgSeqNumSimple::storage_save (std::unique_ptr<type::uint32> *value) const -> bool
+auto nscxx_root::CounterMsgSeqNumSimple::storage_save(std::unique_ptr<type::uint32> *value) const -> bool
 {
-  if (value == nullptr)
+    if (value == nullptr)
     {
-      assert (!(value == nullptr));
-      return false;
+        assert(!(value == nullptr));
+        return false;
     }
 
-  std::unique_ptr<type::uint32> &value0 = *value;
-  if (value0 == nullptr)
+    std::unique_ptr<type::uint32> &value0 = *value;
+    if (value0 == nullptr)
     {
-      value0 = std::make_unique<type::uint32> ();
+        value0 = std::make_unique<type::uint32>();
     }
 
-  auto total_lock = std::unique_lock (m_mutex_read_write);
-  *value0 = this->m_data;
-  return true;
+    auto total_lock = std::unique_lock(m_mutex_read_write);
+    *value0 = this->m_data;
+    return true;
 }

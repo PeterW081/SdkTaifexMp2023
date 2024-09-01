@@ -39,96 +39,96 @@ class ProtocolType;
 
 class xplum_sdkit::taifex_msg_proto::view::message_field::enumerate::MsgType : public _nshdr::ViewerViaEnumToInteger<origin::MessageType, _nshdr::uint8>
 {
-public:
-  MACRO_XPLUM_ANCESTOR_VIEWERVIAENUMTOINTEGER_DEPLOY_SUBCLASS (MsgType);
+  public:
+    MACRO_XPLUM_ANCESTOR_VIEWERVIAENUMTOINTEGER_DEPLOY_SUBCLASS(MsgType);
 };
 
 class xplum_sdkit::taifex_msg_proto::view::message_field::enumerate::SystemType : public _nshdr::ViewerViaEnumToInteger<origin::system_type, _nshdr::uint8>
 {
-public:
-  MACRO_XPLUM_ANCESTOR_VIEWERVIAENUMTOINTEGER_DEPLOY_SUBCLASS (SystemType);
+  public:
+    MACRO_XPLUM_ANCESTOR_VIEWERVIAENUMTOINTEGER_DEPLOY_SUBCLASS(SystemType);
 };
 
 class xplum_sdkit::taifex_msg_proto::view::message_field::enumerate::EncryptMethod : public _nshdr::ViewerViaEnumToInteger<origin::EncryptMethod, _nshdr::uint8>
 {
-public:
-  MACRO_XPLUM_ANCESTOR_VIEWERVIAENUMTOINTEGER_DEPLOY_SUBCLASS (EncryptMethod);
+  public:
+    MACRO_XPLUM_ANCESTOR_VIEWERVIAENUMTOINTEGER_DEPLOY_SUBCLASS(EncryptMethod);
 };
 
 class xplum_sdkit::taifex_msg_proto::view::message_field::enumerate::IsEof : public _nshdr::ViewerViaEnumToInteger<origin::is_eof, _nshdr::uint8>
 {
-public:
-  MACRO_XPLUM_ANCESTOR_VIEWERVIAENUMTOINTEGER_DEPLOY_SUBCLASS (IsEof);
+  public:
+    MACRO_XPLUM_ANCESTOR_VIEWERVIAENUMTOINTEGER_DEPLOY_SUBCLASS(IsEof);
 };
 
 class xplum_sdkit::taifex_msg_proto::view::message_field::enumerate::SubscriptionRequestType : public _nshdr::ViewerViaEnumToInteger<origin::SubscriptionRequestType, _nshdr::uint8>
 {
-public:
-  MACRO_XPLUM_ANCESTOR_VIEWERVIAENUMTOINTEGER_DEPLOY_SUBCLASS (SubscriptionRequestType);
+  public:
+    MACRO_XPLUM_ANCESTOR_VIEWERVIAENUMTOINTEGER_DEPLOY_SUBCLASS(SubscriptionRequestType);
 };
 
 class xplum_sdkit::taifex_msg_proto::view::message_field::enumerate::TradeStatus : public _nshdr::ViewerViaEnumToInteger<origin::TradeStatus, _nshdr::uint8>
 {
-public:
-  MACRO_XPLUM_ANCESTOR_VIEWERVIAENUMTOINTEGER_DEPLOY_SUBCLASS (TradeStatus);
+  public:
+    MACRO_XPLUM_ANCESTOR_VIEWERVIAENUMTOINTEGER_DEPLOY_SUBCLASS(TradeStatus);
 };
 
 class xplum_sdkit::taifex_msg_proto::view::message_field::enumerate::ExecType : public _nshdr::ViewerViaEnumToInteger<origin::ExecType, _nshdr::char0>
 {
-public:
-  MACRO_XPLUM_ANCESTOR_VIEWERVIAENUMTOINTEGER_DEPLOY_SUBCLASS (ExecType);
+  public:
+    MACRO_XPLUM_ANCESTOR_VIEWERVIAENUMTOINTEGER_DEPLOY_SUBCLASS(ExecType);
 };
 
 class xplum_sdkit::taifex_msg_proto::view::message_field::enumerate::SymbolType : public _nshdr::ViewerViaEnumToInteger<origin::symbol_type, _nshdr::uint8>
 {
-public:
-  MACRO_XPLUM_ANCESTOR_VIEWERVIAENUMTOINTEGER_DEPLOY_SUBCLASS (SymbolType);
+  public:
+    MACRO_XPLUM_ANCESTOR_VIEWERVIAENUMTOINTEGER_DEPLOY_SUBCLASS(SymbolType);
 };
 
 class xplum_sdkit::taifex_msg_proto::view::message_field::enumerate::Side : public _nshdr::ViewerViaEnumToInteger<origin::Side, _nshdr::uint8>
 {
-public:
-  MACRO_XPLUM_ANCESTOR_VIEWERVIAENUMTOINTEGER_DEPLOY_SUBCLASS (Side);
+  public:
+    MACRO_XPLUM_ANCESTOR_VIEWERVIAENUMTOINTEGER_DEPLOY_SUBCLASS(Side);
 };
 
 class xplum_sdkit::taifex_msg_proto::view::message_field::enumerate::OrderType : public _nshdr::ViewerViaEnumToInteger<origin::OrdType, _nshdr::uint8>
 {
-public:
-  MACRO_XPLUM_ANCESTOR_VIEWERVIAENUMTOINTEGER_DEPLOY_SUBCLASS (OrderType);
+  public:
+    MACRO_XPLUM_ANCESTOR_VIEWERVIAENUMTOINTEGER_DEPLOY_SUBCLASS(OrderType);
 };
 
 class xplum_sdkit::taifex_msg_proto::view::message_field::enumerate::TimeInForce : public _nshdr::ViewerViaEnumToInteger<origin::TimeInForce, _nshdr::uint8>
 {
-public:
-  MACRO_XPLUM_ANCESTOR_VIEWERVIAENUMTOINTEGER_DEPLOY_SUBCLASS (TimeInForce);
+  public:
+    MACRO_XPLUM_ANCESTOR_VIEWERVIAENUMTOINTEGER_DEPLOY_SUBCLASS(TimeInForce);
 };
 
 class xplum_sdkit::taifex_msg_proto::view::message_field::enumerate::PositionEffect : public _nshdr::ViewerViaEnumToInteger<origin::PositionEffect, _nshdr::char0>
 {
-public:
-  MACRO_XPLUM_ANCESTOR_VIEWERVIAENUMTOINTEGER_DEPLOY_SUBCLASS (PositionEffect);
+  public:
+    MACRO_XPLUM_ANCESTOR_VIEWERVIAENUMTOINTEGER_DEPLOY_SUBCLASS(PositionEffect);
 };
 
 class xplum_sdkit::taifex_msg_proto::view::message_field::enumerate::OrderSource : public _nshdr::ViewerViaEnumToInteger<origin::order_source, _nshdr::char0>
 {
-public:
-  MACRO_XPLUM_ANCESTOR_VIEWERVIAENUMTOINTEGER_DEPLOY_SUBCLASS (OrderSource);
+  public:
+    MACRO_XPLUM_ANCESTOR_VIEWERVIAENUMTOINTEGER_DEPLOY_SUBCLASS(OrderSource);
 };
 
 class xplum_sdkit::taifex_msg_proto::view::message_field::enumerate::LegSide : public _nshdr::ViewerViaEnumToInteger<origin::leg_side, _nshdr::uint8>
 {
-public:
-  MACRO_XPLUM_ANCESTOR_VIEWERVIAENUMTOINTEGER_DEPLOY_SUBCLASS (LegSide);
+  public:
+    MACRO_XPLUM_ANCESTOR_VIEWERVIAENUMTOINTEGER_DEPLOY_SUBCLASS(LegSide);
 };
 
 class xplum_sdkit::taifex_msg_proto::view::message_field::enumerate::TargetId : public _nshdr::ViewerViaEnumToInteger<origin::target_id, _nshdr::uint8>
 {
-public:
-  MACRO_XPLUM_ANCESTOR_VIEWERVIAENUMTOINTEGER_DEPLOY_SUBCLASS (TargetId);
+  public:
+    MACRO_XPLUM_ANCESTOR_VIEWERVIAENUMTOINTEGER_DEPLOY_SUBCLASS(TargetId);
 };
 
 class xplum_sdkit::taifex_msg_proto::view::message_field::enumerate::ProtocolType : public _nshdr::ViewerViaEnumToInteger<origin::protocol_type, _nshdr::uint8>
 {
-public:
-  MACRO_XPLUM_ANCESTOR_VIEWERVIAENUMTOINTEGER_DEPLOY_SUBCLASS (ProtocolType);
+  public:
+    MACRO_XPLUM_ANCESTOR_VIEWERVIAENUMTOINTEGER_DEPLOY_SUBCLASS(ProtocolType);
 };
