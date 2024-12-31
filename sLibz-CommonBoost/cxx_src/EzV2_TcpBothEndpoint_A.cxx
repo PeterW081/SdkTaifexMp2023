@@ -30,7 +30,8 @@ nscxx_root::                 //
         this->m_plugin_server.m_acceptor = std::make_unique<TYPE_asio_acceptor>(this->m_io_context.operator*(), endpoint);
     }
     break;
-        [[unlikely]] default : throw std::invalid_argument("EXCEPTION_MSG_8277AD35: enum, EumeTcpEndpointType,");
+    [[unlikely]] default:
+        throw std::invalid_argument("EXCEPTION_MSG_8277AD35: enum, EumeTcpEndpointType,");
         assert(false);
     }
 }

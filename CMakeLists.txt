@@ -1,19 +1,19 @@
-set(VAR0_PROJECT_NAME "XplumSdk-TaifexMp")
-set(OPT0_IS_ENABLE_EXAMPLE ON)
+set(VAR_cmake_version "3.12")
+set(VAR_package_name "XplumSdk-TaifexMp")
+##X
+set(OPT_IS_ENABLE_EXAMPLE ON)
 
 ###
-cmake_minimum_required(VERSION "3.24.2")
-project("${VAR0_PROJECT_NAME}" VERSION 0.08.019879)
-##-
-set(CMAKE_CXX_STANDARD 20)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
+cmake_minimum_required(VERSION "${VAR_cmake_version}")
+project("${VAR_package_name}" VERSION 0.08.020088)
 
 ###
-find_package(Boost REQUIRED COMPONENTS system)
-add_subdirectory("${PROJECT_SOURCE_DIR}/subdir_Member01-TaifexMp-Origin")
-add_subdirectory("${PROJECT_SOURCE_DIR}/subdir_Member02-TaifexMp-Widget")
-add_subdirectory("${PROJECT_SOURCE_DIR}/subdir_Separate-Common")
-add_subdirectory("${PROJECT_SOURCE_DIR}/subdir_Separate-CommonBoost")
-if("${OPT0_IS_ENABLE_EXAMPLE}")
-  add_subdirectory("${PROJECT_SOURCE_DIR}/subdir_Example")
+add_subdirectory("${PROJECT_SOURCE_DIR}/sLibx-TaifexMpBasic/")
+add_subdirectory("${PROJECT_SOURCE_DIR}/sLibx-TaifexMpExtra/")
+add_subdirectory("${PROJECT_SOURCE_DIR}/sLibz-Common/")
+add_subdirectory("${PROJECT_SOURCE_DIR}/sLibz-CommonBoost/")
+##X
+if("${OPT_IS_ENABLE_EXAMPLE}")
+  add_subdirectory("${PROJECT_SOURCE_DIR}/sTest-Example/")
 endif()
+

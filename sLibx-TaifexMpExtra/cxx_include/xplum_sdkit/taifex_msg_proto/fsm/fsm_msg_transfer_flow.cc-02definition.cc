@@ -136,6 +136,12 @@ struct                                                              //
 
 /// FsmEvent
 ///
+struct                                                              //
+    xplum_sdkit::taifex_msg_proto::fsm_msg_transfer_flow::element:: //
+    FsmEvent::Reset                                                 //
+    : _ns_ignore::FsmElementWrapImpl::FsmEvent
+{
+};
 
 struct                                                              //
     xplum_sdkit::taifex_msg_proto::fsm_msg_transfer_flow::element:: //

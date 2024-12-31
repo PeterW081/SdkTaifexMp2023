@@ -116,7 +116,8 @@ TEST(Example01_MsgLxx, Example01_01MsgLxxRawClient)
             auto msg_view = nscxx::view02::message::L50(buffer);
             break;
         }
-            [[unlikely]] default : FAIL() << "TODO"; // TODO
+        [[unlikely]] default:
+            FAIL() << "TODO"; // TODO
             std::abort();
         }
     }

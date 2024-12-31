@@ -27,8 +27,8 @@ class xplum_sdkit::taifex_msg_proto::view02::msg_view_element::MsgViewPanel : pu
                                                                               public MsgViewPatchSpL41</*    */ TYPE_MSG_VIEW01, MsgViewPanel<TYPE_MSG_VIEW01>>
 {
   public:
-    explicit MsgViewPanel(TYPE_MSG_VIEW01::TYPE_MsgOrigin &data) : TYPE_MSG_VIEW01(data){};
-    explicit MsgViewPanel(std::span<std::byte> buffer) : TYPE_MSG_VIEW01(buffer){};
+    explicit MsgViewPanel(TYPE_MSG_VIEW01::TYPE_MsgOrigin &data) : TYPE_MSG_VIEW01(data) {};
+    explicit MsgViewPanel(std::span<std::byte> buffer) : TYPE_MSG_VIEW01(buffer) {};
 
     template <std::size_t VAL_BUFFER_SIZE>
     static auto FX_ASSIGN_MSG(std::span<std::byte, VAL_BUFFER_SIZE>) -> MsgViewPanel<TYPE_MSG_VIEW01>; // buffer

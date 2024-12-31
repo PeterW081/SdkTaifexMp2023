@@ -2,6 +2,7 @@
 #include "./fsm_msg_transfer_flow.h"
 #pragma
 
+#include <boost/fusion/algorithm.hpp>
 #include <boost/msm/front/functor_row.hpp>
 #include <boost/msm/front/state_machine_def.hpp>
 
@@ -56,6 +57,7 @@ struct                                                              //
     xplum_sdkit::taifex_msg_proto::fsm_msg_transfer_flow::element:: //
     FsmEvent
 {
+    struct Reset;
     struct CallTransferReady;
     struct CallTransfer_L10_FromClient;
     struct CallTransfer_L10_FromServer;
@@ -121,7 +123,8 @@ struct                                                                   //
       boost::msm::front::Row< FsmState::DoneTransfer_L30,                                 FsmEvent::CallTransfer_L40,                              FsmState::DoneTransfer_L40,                                 FsmAction::DoTransfer_L40                  >,
       boost::msm::front::Row< FsmState::DoneTransfer_L40,                                 FsmEvent::StartFsm_MsgTransferFlow_Transfer_L41_L42_L50, FsmStateIsSubMachine::MsgTransferFlow_Transfer_L41_L42_L50, boost::msm::front::none                    >,
       boost::msm::front::Row< FsmStateIsSubMachine::MsgTransferFlow_Transfer_L41_L42_L50, FsmEvent::CloseFsm_MsgTransferFlow_Transfer_L41_L42_L50, FsmState::DoneTransfer_L50,                                 FsmAction::AssertFsmStateOrFsmNoTransition >,
-      boost::msm::front::Row< FsmState::DoneTransfer_L50,                                 FsmEvent::CallTransfer_L60,                              FsmState::DoneTransfer_L60,                                 FsmAction::DoTransfer_L60                  >
+      boost::msm::front::Row< FsmState::DoneTransfer_L50,                                 FsmEvent::CallTransfer_L60,                              FsmState::DoneTransfer_L60,                                 FsmAction::DoTransfer_L60                  >,
+      boost::msm::front::Row< FsmState::DoneTransfer_L60,                                 FsmEvent::Reset,                                         FsmState::DoneTransferReady,                                boost::msm::front::none                    >
         // clang-format on
         >;
     using MsgTransferFlow_Transfer_L10 = boost::mpl::vector<

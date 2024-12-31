@@ -62,12 +62,11 @@ auto                                      //
             this->m_socket = std::move(result.second);
         }
         break;
-            [[unlikely]] default:
-            {
-                this->m_is_done_start = false;
-                assert(false);
-            }
-            break;
+        [[unlikely]] default: {
+            this->m_is_done_start = false;
+            assert(false);
+        }
+        break;
         }
     }
     return this->m_is_done_start;
