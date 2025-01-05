@@ -2,7 +2,7 @@
 #include <map>
 #include <set>
 #include <shared_mutex>
-#include "xplum/ablething/StorageAbleV.h"
+#include "xplum/ablething/StorageAble_V.h"
 #include "xplum_sdkit/taifex_msg_proto/_define_cxx.h"
 
 namespace xplum_sdkit::taifex_msg_proto::ancestor
@@ -10,7 +10,7 @@ namespace xplum_sdkit::taifex_msg_proto::ancestor
 class CounterOrderSeqV;
 }
 
-class xplum_sdkit::taifex_msg_proto::ancestor::CounterOrderSeqV : public xplum::ablething::StorageAbleV::StorageAbleV
+class xplum_sdkit::taifex_msg_proto::ancestor::CounterOrderSeqV : public xplum::ablething::StorageAble_V::StorageAble_V
 {
   public:
     using TypeOrderNo = type::uint32;

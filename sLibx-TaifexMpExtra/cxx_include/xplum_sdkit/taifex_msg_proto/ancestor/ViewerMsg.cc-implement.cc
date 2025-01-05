@@ -40,7 +40,7 @@ auto xplum_sdkit::taifex_msg_proto::ancestor:: //
 template <typename TYPE_MSG, xplum_sdkit::taifex_msg_proto::type::TypeMsgLength VAL_MAX_OF_MSG_LENGTH, xplum_sdkit::taifex_msg_proto::type::TypeMsgLength VAL_MIN_OF_MSG_LENGTH>
 xplum_sdkit::taifex_msg_proto::ancestor::                                                                                               //
     ViewerMsgZipSize<TYPE_MSG, VAL_MAX_OF_MSG_LENGTH, VAL_MIN_OF_MSG_LENGTH>::ViewerMsgZipSize(T &data, type::TypeMsgLength msg_length) //
-    : _nshdr::Viewer<T>(data), m_data_size(msg_length + _nshdr::mt_sizeof_msg_content::SIZE_OUT_OF_MSG_LENGTH)
+    : _nshdr::Viewer<T>(data), m_data_size(msg_length + _nshdr::mt_sizeof_msg_content::G_size_out_of_msg_length)
 {
     assert(M_DATA_MAX_SIZE >= m_data_size);
     assert(M_MSG_LENGTH_MAX_VALUE >= msg_length);
@@ -49,7 +49,7 @@ xplum_sdkit::taifex_msg_proto::ancestor::                                       
 template <typename TYPE_MSG, xplum_sdkit::taifex_msg_proto::type::TypeMsgLength VAL_MAX_OF_MSG_LENGTH, xplum_sdkit::taifex_msg_proto::type::TypeMsgLength VAL_MIN_OF_MSG_LENGTH>
 xplum_sdkit::taifex_msg_proto::ancestor::                                                                                                                   //
     ViewerMsgZipSize<TYPE_MSG, VAL_MAX_OF_MSG_LENGTH, VAL_MIN_OF_MSG_LENGTH>::ViewerMsgZipSize(std::span<std::byte> buffer, type::TypeMsgLength msg_length) //
-    : _nshdr::Viewer<T>(*reinterpret_cast<T *>(buffer.data())), m_data_size(msg_length + _nshdr::mt_sizeof_msg_content::SIZE_OUT_OF_MSG_LENGTH)
+    : _nshdr::Viewer<T>(*reinterpret_cast<T *>(buffer.data())), m_data_size(msg_length + _nshdr::mt_sizeof_msg_content::G_size_out_of_msg_length)
 {
     assert(M_DATA_MAX_SIZE >= m_data_size);
     assert(M_MSG_LENGTH_MAX_VALUE >= msg_length);

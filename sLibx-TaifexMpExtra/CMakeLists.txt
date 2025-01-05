@@ -10,6 +10,9 @@ set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 ###
+unset(ARR_cxx_src)
+unset(ARR_cxx_include)
+unset(ARR_cxx_library)
 file(
   GLOB_RECURSE ARR_cxx_src
   "${PROJECT_SOURCE_DIR}/cxx_src/*.cxx"
@@ -40,3 +43,4 @@ target_link_libraries(
   "${VAR_project_name}" PUBLIC
   "${ARR_cxx_library}"
 )
+

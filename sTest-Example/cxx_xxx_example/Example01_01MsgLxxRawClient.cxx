@@ -1,12 +1,15 @@
 #include <gtest/gtest.h>
 #pragma
-
+#
+#include "xplum_model/taifex_msg_proto/network_osi_L05/constant_tcp.h"
 #include "xplum_sdkit/taifex_msg_proto/kitbag/action_kitbag_tcp_contact.h"
 #include "xplum_sdkit/taifex_msg_proto/view02/msg_all_layer.h"
-#include "xplum_sdkit/taifex_msg_proto/network/EzV2_TcpClientMsg_Sync.h"
+#include "xplum_sdkit/taifex_msg_proto/network/EzV3_TaifexMpSocketer_Sync.h"
+#
 
 namespace nscxx
 {
+using namespace xplum_model::taifex_msg_proto::tcp_parament;
 using namespace xplum_sdkit::taifex_msg_proto;
 static const auto G_PATTERN_UNITY_TCP_SESSION = kitbag::UnityTcpSession{
     .m_server_host = "127.0.0.1",
@@ -23,7 +26,6 @@ static const auto G_PATTERN_UNITY_TCP_SESSION = kitbag::UnityTcpSession{
 TEST(Example01_MsgLxx, Example01_01MsgLxxRawClient)
 {
 #if (true)
-    return;
     GTEST_SKIP();
 #endif
 
@@ -31,9 +33,10 @@ TEST(Example01_MsgLxx, Example01_01MsgLxxRawClient)
 
     std::array<std::byte, 1024> buffer = {};
     auto unity = nscxx::G_PATTERN_UNITY_TCP_SESSION;
-    auto tcp_client_msg = nscxx::network::EzV2_TcpClientMsg_Sync(unity.m_server_host, unity.m_server_port);
-    auto tcp_read_timeout = std::chrono::seconds(decltype(unity)::M_LXX_LAYER_TIMEOUT_S);
-    tcp_client_msg.start(tcp_read_timeout);
+    auto tcp_client_msg0 = nscxx::network::EzV3_TaifexMpSocketer_Sync(nscxx::network::EumeTcpEndpointSide::CLIENT, unity.m_server_host, unity.m_server_port);
+    auto &tcp_client_msg = dynamic_cast<xplum::ancestor::SocketerSync_V &>(tcp_client_msg0);
+    auto tcp_read_timeout = std::chrono::seconds(nscxx::G_lxx_layer_timeout_s);
+    tcp_client_msg.fv_start(tcp_read_timeout);
 
     std::shared_ptr counter_msg_seq = std::make_shared<nscxx::kitbag::CounterMsgSeqNumSimple>();
     unity.m_counter_msg_seq = counter_msg_seq;
@@ -46,11 +49,11 @@ TEST(Example01_MsgLxx, Example01_01MsgLxxRawClient)
         msg_view.m_hdr.m_session_id = unity.m_session_id;
         msg_view.fx_assign_m_msg_time_0_time_now();
         msg_view.fx_assign_m_check_sum_0_algorithm();
-        tcp_client_msg.write_msg(buffer);
+        tcp_client_msg.fv_write(buffer);
     }
     // reade - L10
     {
-        tcp_client_msg.reade_msg(buffer, tcp_read_timeout);
+        tcp_client_msg.fv_reade(buffer, tcp_read_timeout);
         ASSERT_TRUE(MsgType::EnumType::L10 == nscxx::ez_view::FX_GET_MSG_TYPE_IN_ORIGIN_MSG_1CONST(buffer.data()).enum_value());
         auto msg_view = nscxx::view02::message::L10(buffer);
     }
@@ -61,11 +64,11 @@ TEST(Example01_MsgLxx, Example01_01MsgLxxRawClient)
         msg_view.m_hdr.m_session_id = unity.m_session_id;
         msg_view.fx_assign_m_msg_time_0_time_now();
         msg_view.fx_assign_m_check_sum_0_algorithm();
-        tcp_client_msg.write_msg(buffer);
+        tcp_client_msg.fv_write(buffer);
     }
     // reade - L30
     {
-        tcp_client_msg.reade_msg(buffer, tcp_read_timeout);
+        tcp_client_msg.fv_reade(buffer, tcp_read_timeout);
         ASSERT_TRUE(MsgType::EnumType::L30 == nscxx::ez_view::FX_GET_MSG_TYPE_IN_ORIGIN_MSG_1CONST(buffer.data()).enum_value());
         auto msg_view = nscxx::view02::message::L30(buffer);
         unity.m_secrecy.m_append_no = msg_view.m_append_no;
@@ -96,11 +99,11 @@ TEST(Example01_MsgLxx, Example01_01MsgLxxRawClient)
         msg_view.m_hdr.m_session_id = unity.m_session_id;
         msg_view.fx_assign_m_msg_time_0_time_now();
         msg_view.fx_assign_m_check_sum_0_algorithm();
-        tcp_client_msg.write_msg(buffer);
+        tcp_client_msg.fv_write(buffer);
     }
     // reade - L41, L42, L50,
     {
-        tcp_client_msg.reade_msg(buffer, tcp_read_timeout);
+        tcp_client_msg.fv_reade(buffer, tcp_read_timeout);
         ASSERT_TRUE(false                                                                                                         //
                     || MsgType::EnumType::L41 == nscxx::ez_view::FX_GET_MSG_TYPE_IN_ORIGIN_MSG_1CONST(buffer.data()).enum_value() //
                     || MsgType::EnumType::L42 == nscxx::ez_view::FX_GET_MSG_TYPE_IN_ORIGIN_MSG_1CONST(buffer.data()).enum_value() //
@@ -129,7 +132,7 @@ TEST(Example01_MsgLxx, Example01_01MsgLxxRawClient)
         msg_view.m_hdr.m_session_id = unity.m_session_id;
         msg_view.fx_assign_m_msg_time_0_time_now();
         msg_view.fx_assign_m_check_sum_0_algorithm();
-        tcp_client_msg.write_msg(buffer);
+        tcp_client_msg.fv_write(buffer);
     }
 
     //

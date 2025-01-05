@@ -1,15 +1,16 @@
 #pragma once
 #include "./msg_kitbag_re_orderno.h"
 #pragma
-
+#
 #include "xplum/ancestor_algorithm/ConvertorBtwStrIntByCustomDigit.h"
-#include "xplum_model/taifex_msg_proto/structure_message_field/msg_field_sizeof_array.h"
+#include "xplum_model/taifex_msg_proto/network_osi_L06/structure_msg_field/msg_field_array.h"
 #include "xplum_sdkit/taifex_msg_proto/ancestor/CounterOrderSeqV.h"
+#
 
 namespace xplum_sdkit::taifex_msg_proto::kitbag::_nshdr
 {
 using xplum::ancestor::ConvertorBtwStrIntByCustomDigit;
-using xplum_model::taifex_msg_proto::message_field::sizeof_array::Order;
+using xplum_model::taifex_msg_proto::message_field::array::order_no;
 static constexpr char DIGIT_TABLE_ORDER_NO[] = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
 }
 
@@ -20,7 +21,7 @@ concept FX_CONCEPT_0_FX_CONVERT_ORDER_NO_TO_VALUE = std::is_same<typename std::i
 template <auto FUNCTION>
 concept FX_CONCEPT_0_FX_CONVERT_ORDER_NO_TO_TEXT_CHAR_ARRAY = //
     requires(typename std::invoke_result<decltype(FUNCTION), std::uint32_t>::type::element_type func_return_0_ptr_element_type) {
-        requires std::tuple_size<decltype(func_return_0_ptr_element_type)>::value <= _nshdr::Order::M_SIZEOF_ARR_0_ORDER_NO;
+        requires std::extent<decltype(func_return_0_ptr_element_type)>::value <= std::extent<_nshdr::order_no>::value;
         requires std::is_same<decltype(func_return_0_ptr_element_type), std::array<char, std::tuple_size<decltype(func_return_0_ptr_element_type)>::value>>::value;
     };
 }
@@ -52,7 +53,7 @@ class xplum_sdkit::taifex_msg_proto::kitbag:: //
 
 struct xplum_sdkit::taifex_msg_proto::kitbag:: //
     ConvertorOrderNo                           //
-    : protected _nshdr::ConvertorBtwStrIntByCustomDigit<_nshdr::DIGIT_TABLE_ORDER_NO, _nshdr::Order::M_SIZEOF_ARR_0_ORDER_NO, std::uint32_t>
+    : protected _nshdr::ConvertorBtwStrIntByCustomDigit<_nshdr::DIGIT_TABLE_ORDER_NO, std::extent<_nshdr::order_no>::value, std::uint32_t>
 {
   public:
     static auto FX_CONVERT_ORDER_NO_TO_VALUE(std::string_view) -> std::optional<std::uint32_t>;

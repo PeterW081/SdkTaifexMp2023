@@ -1,7 +1,6 @@
 #pragma once
 #include <shared_mutex>
-#include <optional>
-#include "xplum/ablething/StorageAbleV.h"
+#include "xplum/ablething/StorageAble_V.h"
 #include "xplum_sdkit/taifex_msg_proto/_define_cxx.h"
 
 namespace xplum_sdkit::taifex_msg_proto::ancestor
@@ -9,7 +8,7 @@ namespace xplum_sdkit::taifex_msg_proto::ancestor
 class CounterMsgSeqNumV;
 }
 
-class xplum_sdkit::taifex_msg_proto::ancestor::CounterMsgSeqNumV : public xplum::ablething::StorageAbleV::StorageAbleV
+class xplum_sdkit::taifex_msg_proto::ancestor::CounterMsgSeqNumV : public xplum::ablething::StorageAble_V::StorageAble_V
 {
   public:
     using TypeMsgSeqNum = type::uint32;

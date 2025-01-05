@@ -1,5 +1,5 @@
 #pragma once
-#include "xplum_model/taifex_msg_proto/static_constant_msg_tcp.h"
+#include "xplum_model/taifex_msg_proto/network_osi_L05/constant_tcp.h"
 #include "xplum_sdkit/taifex_msg_proto/view/msg_field_enumerate.h"
 #include "xplum_sdkit/taifex_msg_proto/kitbag/msg_kitbag_common.h"
 
@@ -17,7 +17,6 @@ struct UnityTcpSessionPluginReServer_MOCK;
 struct                                      //
     xplum_sdkit::taifex_msg_proto::kitbag:: //
     UnityTcpSession                         //
-    : xplum_model::taifex_msg_proto::network_agreement::TcpContact
 {
     // tcp contact
     std::string m_server_host;

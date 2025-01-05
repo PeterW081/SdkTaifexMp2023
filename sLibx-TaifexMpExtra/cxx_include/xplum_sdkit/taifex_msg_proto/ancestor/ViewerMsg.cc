@@ -4,7 +4,7 @@
 
 #include <span>
 #include "xplum/ancestor/Viewer.h"
-#include "xplum_model/taifex_msg_proto/static_constant.h"
+#include "xplum_model/taifex_msg_proto/network_osi_L06/constant_msg.h"
 #include "xplum_sdkit/taifex_msg_proto/_define_cxx.h"
 
 #define MACRO_XPLUM_ANCESTOR_VIEWERMSGFIXSIZE_DEPLOY_SUBCLASS(PARAM01_SUBCLASS_NAME)                                                                                                                                                                           \
@@ -15,7 +15,7 @@
 
 namespace xplum_sdkit::taifex_msg_proto::ancestor::_nshdr
 {
-namespace mt_sizeof_msg_content = xplum_model::taifex_msg_proto::mt_sizeof_msg_content;
+namespace mt_sizeof_msg_content = xplum_model::taifex_msg_proto::msg_sizeof_content;
 using xplum::ancestor::Viewer;
 }
 
@@ -66,5 +66,5 @@ class xplum_sdkit::taifex_msg_proto::ancestor::ViewerMsgZipSize : public _nshdr:
     const std::size_t m_data_size;
 
   private:
-    static_assert(M_DATA_MAX_SIZE == M_MSG_LENGTH_MAX_VALUE + _nshdr::mt_sizeof_msg_content::SIZE_OUT_OF_MSG_LENGTH);
+    static_assert(M_DATA_MAX_SIZE == M_MSG_LENGTH_MAX_VALUE + _nshdr::mt_sizeof_msg_content::G_size_out_of_msg_length);
 };

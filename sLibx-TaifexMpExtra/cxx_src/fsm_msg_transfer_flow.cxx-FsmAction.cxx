@@ -1,24 +1,28 @@
 #include "xplum_sdkit/taifex_msg_proto/fsm/fsm_msg_transfer_flow.h"
 #pragma
-
+#
 #include "xplum_sdkit/taifex_msg_proto/view02/msg_all_layer.h"
+#include "xplum_sdkit/taifex_msg_proto/network/EzV3_TaifexMpSocketer_Sync.h"
+#
 
 namespace nscxx_root = xplum_sdkit::taifex_msg_proto::fsm_msg_transfer_flow;
 namespace nscxx
 {
-using namespace xplum_model::taifex_msg_proto::algorithm;
+using namespace xplum_model::taifex_msg_proto::tcp_parament;
 using xplum_sdkit::taifex_msg_proto::kitbag::UnityTcpSession;
+using xplum_sdkit::taifex_msg_proto::network::EumeTcpEndpointSide;
+using xplum_sdkit::taifex_msg_proto::network::EzV3_TaifexMpSocketer_Sync;
 using MsgEnumType = xplum_sdkit::taifex_msg_proto::view::message_field::enumerate::MsgType::EnumType;
 
 template <MsgEnumType, MsgEnumType>
-static inline auto FX_ASSERT_MSG_TYPE_OR_THROW_RUNTIME_EXCEPTION(void *) -> void;
-static inline auto FX_IS_MSG_TYPE_L41(void *) -> bool;
+static auto FX_ASSERT_MSG_TYPE_OR_THROW_RUNTIME_EXCEPTION(void *) -> void;
+static auto FX_IS_MSG_TYPE_L41(void *) -> bool;
 
 }
+
+/// namespace nscxx
 template <nscxx::MsgEnumType VALUE_MsgEnumType01, nscxx::MsgEnumType VALUE_MsgEnumType02 = VALUE_MsgEnumType01>
-auto        //
-    nscxx:: //
-    FX_ASSERT_MSG_TYPE_OR_THROW_RUNTIME_EXCEPTION(void *data) -> void
+static auto nscxx::FX_ASSERT_MSG_TYPE_OR_THROW_RUNTIME_EXCEPTION(void *data) -> void
 {
     const auto var = xplum_sdkit::taifex_msg_proto::ez_view::FX_GET_MSG_TYPE_IN_ORIGIN_MSG_1CONST(data).enum_value();
     auto is_throw_exception = false;
@@ -35,9 +39,7 @@ auto        //
         throw std::runtime_error("EXCEPTION_MSG_8F4C5734: taifex_msg_proto, tcp_reade, msg_type_is_wrong,");
     }
 }
-auto        //
-    nscxx:: //
-    FX_IS_MSG_TYPE_L41(void *data) -> bool
+static auto nscxx::FX_IS_MSG_TYPE_L41(void *data) -> bool
 {
     return (MsgEnumType::L41 == xplum_sdkit::taifex_msg_proto::ez_view::FX_GET_MSG_TYPE_IN_ORIGIN_MSG_1CONST(data).enum_value());
 }
@@ -54,10 +56,10 @@ auto                             //
 {
     auto &host = ctrl.m_unity->m_server_host;
     auto &port = ctrl.m_unity->m_server_port;
-    ctrl.m_tcp_endpoint = std::make_shared<network::EzV2_TcpClientMsg_Sync>(host, port);
+    ctrl.m_tcp_endpoint = std::make_shared<nscxx::EzV3_TaifexMpSocketer_Sync>(nscxx::EumeTcpEndpointSide::CLIENT, host, port);
 
-    auto tcp_read_timeout = std::chrono::seconds(nscxx::UnityTcpSession::M_LXX_LAYER_TIMEOUT_S);
-    ctrl.m_tcp_endpoint->start(tcp_read_timeout);
+    auto tcp_read_timeout = std::chrono::seconds(nscxx::G_lxx_layer_timeout_s);
+    ctrl.m_tcp_endpoint->fv_start(tcp_read_timeout);
 }
 //- Server
 auto                             //
@@ -67,10 +69,10 @@ auto                             //
 {
     auto &host = ctrl.m_unity->m_server_host;
     auto &port = ctrl.m_unity->m_server_port;
-    ctrl.m_tcp_endpoint = std::make_shared<network::EzV2_TcpServerMsg_Sync>(host, port);
+    ctrl.m_tcp_endpoint = std::make_shared<nscxx::EzV3_TaifexMpSocketer_Sync>(nscxx::EumeTcpEndpointSide::SERVER, host, port);
 
-    auto tcp_read_timeout = std::chrono::seconds(nscxx::UnityTcpSession::M_LXX_LAYER_TIMEOUT_S);
-    ctrl.m_tcp_endpoint->start(tcp_read_timeout);
+    auto tcp_read_timeout = std::chrono::seconds(nscxx::G_lxx_layer_timeout_s);
+    ctrl.m_tcp_endpoint->fv_start(tcp_read_timeout);
 }
 
 /// DoTransfer_L10_FromClient
@@ -90,7 +92,7 @@ auto                                       //
     msg_view.m_hdr.m_session_id = unity.m_session_id;
     msg_view.fx_assign_m_msg_time_0_time_now();
     msg_view.fx_assign_m_check_sum_0_algorithm();
-    ctrl.m_tcp_endpoint->write_msg(ctrl.m_tcp_buffer_for_write);
+    ctrl.m_tcp_endpoint->fv_write(ctrl.m_tcp_buffer_for_write);
 }
 //- Server
 auto                                       //
@@ -101,8 +103,8 @@ auto                                       //
     /// note: tcp reade L10
 
     // meta: tcp reade msg
-    auto tcp_read_timeout = std::chrono::seconds(nscxx::UnityTcpSession::M_LXX_LAYER_TIMEOUT_S);
-    ctrl.m_tcp_endpoint->reade_msg(ctrl.m_tcp_buffer_for_reade, tcp_read_timeout);
+    auto tcp_read_timeout = std::chrono::seconds(nscxx::G_lxx_layer_timeout_s);
+    ctrl.m_tcp_endpoint->fv_reade(ctrl.m_tcp_buffer_for_reade, tcp_read_timeout);
     nscxx::FX_ASSERT_MSG_TYPE_OR_THROW_RUNTIME_EXCEPTION<nscxx::MsgEnumType::L10>(ctrl.m_tcp_buffer_for_reade.data());
 
     //
@@ -122,8 +124,8 @@ auto                                       //
     /// note: tcp reade L10
 
     // meta: tcp reade msg
-    auto tcp_read_timeout = std::chrono::seconds(nscxx::UnityTcpSession::M_LXX_LAYER_TIMEOUT_S);
-    ctrl.m_tcp_endpoint->reade_msg(ctrl.m_tcp_buffer_for_reade, tcp_read_timeout);
+    auto tcp_read_timeout = std::chrono::seconds(nscxx::G_lxx_layer_timeout_s);
+    ctrl.m_tcp_endpoint->fv_reade(ctrl.m_tcp_buffer_for_reade, tcp_read_timeout);
     nscxx::FX_ASSERT_MSG_TYPE_OR_THROW_RUNTIME_EXCEPTION<nscxx::MsgEnumType::L10>(ctrl.m_tcp_buffer_for_reade.data());
 
     // fsm: ctrl flag
@@ -145,7 +147,7 @@ auto                                       //
     msg_view.m_hdr.m_session_id = unity.m_session_id;
     msg_view.fx_assign_m_msg_time_0_time_now();
     msg_view.fx_assign_m_check_sum_0_algorithm();
-    ctrl.m_tcp_endpoint->write_msg(ctrl.m_tcp_buffer_for_write);
+    ctrl.m_tcp_endpoint->fv_write(ctrl.m_tcp_buffer_for_write);
 
     // fsm: ctrl flag
     ctrl.m_is_done_transfer_L10_from_server = true;
@@ -168,7 +170,7 @@ auto                            //
     msg_view.m_hdr.m_session_id = unity.m_session_id;
     msg_view.fx_assign_m_msg_time_0_time_now();
     msg_view.fx_assign_m_check_sum_0_algorithm();
-    ctrl.m_tcp_endpoint->write_msg(ctrl.m_tcp_buffer_for_write);
+    ctrl.m_tcp_endpoint->fv_write(ctrl.m_tcp_buffer_for_write);
 }
 //- Server
 auto                            //
@@ -179,8 +181,8 @@ auto                            //
     /// note: tcp reade L20
 
     // meta: tcp reade msg
-    auto tcp_read_timeout = std::chrono::seconds(nscxx::UnityTcpSession::M_LXX_LAYER_TIMEOUT_S);
-    ctrl.m_tcp_endpoint->reade_msg(ctrl.m_tcp_buffer_for_reade, tcp_read_timeout);
+    auto tcp_read_timeout = std::chrono::seconds(nscxx::G_lxx_layer_timeout_s);
+    ctrl.m_tcp_endpoint->fv_reade(ctrl.m_tcp_buffer_for_reade, tcp_read_timeout);
     nscxx::FX_ASSERT_MSG_TYPE_OR_THROW_RUNTIME_EXCEPTION<nscxx::MsgEnumType::L20>(ctrl.m_tcp_buffer_for_reade.data());
 }
 
@@ -194,8 +196,8 @@ auto                            //
     /// note: tcp reade L30
 
     // meta: tcp reade msg
-    auto tcp_read_timeout = std::chrono::seconds(nscxx::UnityTcpSession::M_LXX_LAYER_TIMEOUT_S);
-    ctrl.m_tcp_endpoint->reade_msg(ctrl.m_tcp_buffer_for_reade, tcp_read_timeout);
+    auto tcp_read_timeout = std::chrono::seconds(nscxx::G_lxx_layer_timeout_s);
+    ctrl.m_tcp_endpoint->fv_reade(ctrl.m_tcp_buffer_for_reade, tcp_read_timeout);
     nscxx::FX_ASSERT_MSG_TYPE_OR_THROW_RUNTIME_EXCEPTION<nscxx::MsgEnumType::L30>(ctrl.m_tcp_buffer_for_reade.data());
 
     auto &unity = ctrl.m_unity.operator*();
@@ -225,7 +227,7 @@ auto                            //
     msg_view.m_hdr.m_session_id = unity.m_session_id;
     msg_view.fx_assign_m_msg_time_0_time_now();
     msg_view.fx_assign_m_check_sum_0_algorithm();
-    ctrl.m_tcp_endpoint->write_msg(ctrl.m_tcp_buffer_for_write);
+    ctrl.m_tcp_endpoint->fv_write(ctrl.m_tcp_buffer_for_write);
 }
 
 /// DoTransfer_L40
@@ -266,7 +268,7 @@ auto                            //
     msg_view.m_hdr.m_session_id = unity.m_session_id;
     msg_view.fx_assign_m_msg_time_0_time_now();
     msg_view.fx_assign_m_check_sum_0_algorithm();
-    ctrl.m_tcp_endpoint->write_msg(ctrl.m_tcp_buffer_for_write);
+    ctrl.m_tcp_endpoint->fv_write(ctrl.m_tcp_buffer_for_write);
 }
 //- Server
 auto                            //
@@ -275,10 +277,11 @@ auto                            //
     fx_operator_tcp_server(CtrlHandle &ctrl) -> void
 {
     /// note: tcp reade L40
+    namespace nsfunc = xplum_model::taifex_msg_proto::msg_algorithm;
 
     // meta: tcp reade msg
-    auto tcp_read_timeout = std::chrono::seconds(nscxx::UnityTcpSession::M_LXX_LAYER_TIMEOUT_S);
-    ctrl.m_tcp_endpoint->reade_msg(ctrl.m_tcp_buffer_for_reade, tcp_read_timeout);
+    auto tcp_read_timeout = std::chrono::seconds(nscxx::G_lxx_layer_timeout_s);
+    ctrl.m_tcp_endpoint->fv_reade(ctrl.m_tcp_buffer_for_reade, tcp_read_timeout);
     nscxx::FX_ASSERT_MSG_TYPE_OR_THROW_RUNTIME_EXCEPTION<nscxx::MsgEnumType::L40>(ctrl.m_tcp_buffer_for_reade.data());
 
     //
@@ -296,7 +299,7 @@ auto                            //
     is_ok &= is_ok && unity.m_secrecy.m_fcm_passwd.has_value();
     is_ok &= is_ok && unity_re_server.fx_is_allow_login_fcm_session(msg_view.m_fcm_id, msg_view.m_session_id);
     is_ok &= is_ok && (msg_view.m_append_no == unity.m_secrecy.m_append_no.value());
-    is_ok &= is_ok && (msg_view.m_key_value == nscxx::FX_MSG_L40_KEY_VALUE(unity.m_secrecy.m_fcm_passwd.value(), unity.m_secrecy.m_append_no.value()));
+    is_ok &= is_ok && (msg_view.m_key_value == nsfunc::FX_msg_L40_key_value(unity.m_secrecy.m_fcm_passwd.value(), unity.m_secrecy.m_append_no.value()));
     if (not is_ok)
     {
         throw std::runtime_error("EXCEPTION_MSG_3EF33BB6: taifex_msg_proto, tcp_work_flow, business_wrong,");
@@ -322,7 +325,7 @@ auto                            //
     msg_view.m_hdr.m_session_id = unity.m_session_id;
     msg_view.fx_assign_m_msg_time_0_time_now();
     msg_view.fx_assign_m_check_sum_0_algorithm();
-    ctrl.m_tcp_endpoint->write_msg(ctrl.m_tcp_buffer_for_write);
+    ctrl.m_tcp_endpoint->fv_write(ctrl.m_tcp_buffer_for_write);
 }
 //- Server
 auto                            //
@@ -333,8 +336,8 @@ auto                            //
     /// note: tcp reade L42
 
     // meta: tcp reade msg
-    auto tcp_read_timeout = std::chrono::seconds(nscxx::UnityTcpSession::M_LXX_LAYER_TIMEOUT_S);
-    ctrl.m_tcp_endpoint->reade_msg(ctrl.m_tcp_buffer_for_reade, tcp_read_timeout);
+    auto tcp_read_timeout = std::chrono::seconds(nscxx::G_lxx_layer_timeout_s);
+    ctrl.m_tcp_endpoint->fv_reade(ctrl.m_tcp_buffer_for_reade, tcp_read_timeout);
     nscxx::FX_ASSERT_MSG_TYPE_OR_THROW_RUNTIME_EXCEPTION<nscxx::MsgEnumType::L42>(ctrl.m_tcp_buffer_for_reade.data());
 }
 
@@ -355,7 +358,7 @@ auto                            //
     msg_view.m_hdr.m_session_id = unity.m_session_id;
     msg_view.fx_assign_m_msg_time_0_time_now();
     msg_view.fx_assign_m_check_sum_0_algorithm();
-    ctrl.m_tcp_endpoint->write_msg(ctrl.m_tcp_buffer_for_write);
+    ctrl.m_tcp_endpoint->fv_write(ctrl.m_tcp_buffer_for_write);
 
     //
     ctrl.m_unity->m_secrecy.fx_scrap();
@@ -369,8 +372,8 @@ auto                            //
     /// note: tcp reade L60
 
     // meta: tcp reade msg
-    auto tcp_read_timeout = std::chrono::seconds(nscxx::UnityTcpSession::M_LXX_LAYER_TIMEOUT_S);
-    ctrl.m_tcp_endpoint->reade_msg(ctrl.m_tcp_buffer_for_reade, tcp_read_timeout);
+    auto tcp_read_timeout = std::chrono::seconds(nscxx::G_lxx_layer_timeout_s);
+    ctrl.m_tcp_endpoint->fv_reade(ctrl.m_tcp_buffer_for_reade, tcp_read_timeout);
     nscxx::FX_ASSERT_MSG_TYPE_OR_THROW_RUNTIME_EXCEPTION<nscxx::MsgEnumType::L60>(ctrl.m_tcp_buffer_for_reade.data());
 
     //
@@ -387,8 +390,8 @@ auto                                   //
     /// note: tcp reade L40,L50,
 
     // meta: tcp reade msg
-    auto tcp_read_timeout = std::chrono::seconds(nscxx::UnityTcpSession::M_LXX_LAYER_TIMEOUT_S);
-    ctrl.m_tcp_endpoint->reade_msg(ctrl.m_tcp_buffer_for_reade, tcp_read_timeout);
+    auto tcp_read_timeout = std::chrono::seconds(nscxx::G_lxx_layer_timeout_s);
+    ctrl.m_tcp_endpoint->fv_reade(ctrl.m_tcp_buffer_for_reade, tcp_read_timeout);
     nscxx::FX_ASSERT_MSG_TYPE_OR_THROW_RUNTIME_EXCEPTION<nscxx::MsgEnumType::L41, nscxx::MsgEnumType::L50>(ctrl.m_tcp_buffer_for_reade.data());
 
     //
@@ -458,7 +461,7 @@ auto                                   //
     [[unlikely]] default:
         break;
     }
-    ctrl.m_tcp_endpoint->write_msg(ctrl.m_tcp_buffer_for_write);
+    ctrl.m_tcp_endpoint->fv_write(ctrl.m_tcp_buffer_for_write);
 
     // fsm: ctrl flag
     switch (msg_type)

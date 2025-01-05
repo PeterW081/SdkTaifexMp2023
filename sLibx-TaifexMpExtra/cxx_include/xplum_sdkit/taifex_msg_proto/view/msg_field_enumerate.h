@@ -1,7 +1,7 @@
 #pragma once
 #include "xplum/ancestor/ViewerViaEnumToInteger.h"
-#include "xplum_model/taifex_msg_proto/structure_message_field/msg_field.h"
-#include "xplum_model/taifex_msg_proto/structure_message_field/msg_field_enumerate.h"
+#include "xplum_model/taifex_msg_proto/network_osi_L06/structure_msg_field/msg_field.h"
+#include "xplum_model/taifex_msg_proto/network_osi_L06/structure_msg_field/msg_field_enumerate.h"
 
 namespace xplum_sdkit::taifex_msg_proto::view::message_field::enumerate::_nshdr
 {

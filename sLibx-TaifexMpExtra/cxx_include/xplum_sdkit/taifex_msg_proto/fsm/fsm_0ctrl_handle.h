@@ -1,10 +1,11 @@
 #pragma once
-#include "xplum_sdkit/taifex_msg_proto/network/EzV2_TcpClientMsg_Sync.h"
+#include "boost0/asio/_define_cxx.h"
+#include "xplum/ancestor/SocketerSync_V.h"
 #include "xplum_sdkit/taifex_msg_proto/kitbag/action_kitbag_tcp_contact.h"
+#
 
 namespace xplum_sdkit::taifex_msg_proto::fsm_msg_transfer_flow::ctrl_handle
 {
-using xplum_sdkit::taifex_msg_proto::network::EumeTcpEndpointSide;
 struct FsmCtrlHandleTcpTransfer;
 struct FsmCtrlHandleTcpSession;
 }
@@ -13,10 +14,10 @@ struct                                                                  //
     xplum_sdkit::taifex_msg_proto::fsm_msg_transfer_flow::ctrl_handle:: //
     FsmCtrlHandleTcpTransfer
 {
-    EumeTcpEndpointSide m_side;
+    ext::boost_asio0::EumeTcpEndpointSide m_side;
     std::array<std::byte, 1024> m_tcp_buffer_for_write;
     std::array<std::byte, 1024> m_tcp_buffer_for_reade;
-    std::shared_ptr<xplum_sdkit::taifex_msg_proto::network::EzV2_TcpBothEndpointMsg_Sync> m_tcp_endpoint; // client, server,
+    std::shared_ptr<xplum::ancestor::SocketerSync_V> m_tcp_endpoint; // tcp_server, tcp_client,
 };
 
 struct                                                                  //

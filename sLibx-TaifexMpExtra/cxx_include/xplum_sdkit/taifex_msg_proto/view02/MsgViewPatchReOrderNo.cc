@@ -17,16 +17,20 @@ using xplum_sdkit::taifex_msg_proto::ancestor::AssignerMsgFieldArrayChar;
 using xplum_sdkit::taifex_msg_proto::ancestor::_nshdr::ArrayAlign;
 using xplum_sdkit::taifex_msg_proto::kitbag::ConvertorOrderNo;
 using MsgFieldChar0 = xplum_model::taifex_msg_proto::message_field::char0;
-using SizeOfArrayOrder = xplum_model::taifex_msg_proto::message_field::sizeof_array::Order;
-using SizeOfArraySymbol = xplum_model::taifex_msg_proto::message_field::sizeof_array::Symbol;
+
+// class - 02
+using StdExtent_0_order_no = std::extent<xplum_model::taifex_msg_proto::message_field::array::order_no>;
+using StdExtent_0_user_define = std::extent<xplum_model::taifex_msg_proto::message_field::array::user_define>;
+using StdExtent_0_symbol_text = std::extent<xplum_model::taifex_msg_proto::message_field::array::symbol_text_0_symbol>;
+
 }
 namespace xplum_sdkit::taifex_msg_proto::view02::msg_view_element::_nsign
 {
 template <typename TYPE_MSG_VIEW01>
 concept MsgViewPatchReOrderNo_Concept = //
     requires(TYPE_MSG_VIEW01 *thiz) {   //
-        requires(std::is_same_v<_nshdr::MsgFieldChar0(&)[_nshdr::SizeOfArrayOrder::M_SIZEOF_ARR_0_ORDER_NO], decltype(thiz->m_order_no)>);
-        requires(std::is_same_v<_nshdr::MsgFieldChar0(&)[_nshdr::SizeOfArrayOrder::M_SIZEOF_ARR_0_USER_DEFINE], decltype(thiz->m_user_define)>);
+        requires(std::is_same_v<_nshdr::MsgFieldChar0(&)[_nshdr::StdExtent_0_order_no::value], decltype(thiz->m_order_no)>);
+        requires(std::is_same_v<_nshdr::MsgFieldChar0(&)[_nshdr::StdExtent_0_user_define::value], decltype(thiz->m_user_define)>);
         requires(std::is_same_v<view::message_field::SymbolX, decltype(thiz->m_sym)>);
         requires(std::is_same_v<view::message_field::uint32, decltype(thiz->m_order_id)>);
         requires(std::is_same_v<view::message_field::enumerate::ExecType, decltype(thiz->m_exec_type)>);
@@ -45,13 +49,11 @@ template <typename TYPE_MSG_VIEW02_PANEL>                               //
 class xplum_sdkit::taifex_msg_proto::view02::msg_view_element::_nsign:: //
     MsgViewPatchReOrderNo                                               //
     : public xplum::ancestor::PluginerWay02<MsgViewPatchReOrderNo<TYPE_MSG_VIEW02_PANEL>, TYPE_MSG_VIEW02_PANEL>,
-      _nshdr::SizeOfArrayOrder,
-      _nshdr::SizeOfArraySymbol,
       _nshdr::ConvertorOrderNo
 {
-    using AssignerOrderNo = _nshdr::AssignerMsgFieldArrayChar<M_SIZEOF_ARR_0_ORDER_NO, '0', _nshdr::ArrayAlign<M_SIZEOF_ARR_0_ORDER_NO>::ALIGN_RIGHT>;
-    using AssignerUserDefine = _nshdr::AssignerMsgFieldArrayChar<M_SIZEOF_ARR_0_USER_DEFINE, '0', _nshdr::ArrayAlign<M_SIZEOF_ARR_0_USER_DEFINE>::ALIGN_RIGHT>;
-    using AssignerSymbol = _nshdr::AssignerMsgFieldArrayChar<M_SIZEOF_ARR_0_TEXT_SYMBOL, ' ', _nshdr::ArrayAlign<M_SIZEOF_ARR_0_TEXT_SYMBOL>::ALIGN_LEFT>;
+    using AssignerOrderNo = _nshdr::AssignerMsgFieldArrayChar<_nshdr::StdExtent_0_order_no::value, '0', _nshdr::ArrayAlign<_nshdr::StdExtent_0_order_no::value>::ALIGN_RIGHT>;
+    using AssignerUserDefine = _nshdr::AssignerMsgFieldArrayChar<_nshdr::StdExtent_0_user_define::value, '0', _nshdr::ArrayAlign<_nshdr::StdExtent_0_user_define::value>::ALIGN_RIGHT>;
+    using AssignerSymbol = _nshdr::AssignerMsgFieldArrayChar<_nshdr::StdExtent_0_symbol_text::value, ' ', _nshdr::ArrayAlign<_nshdr::StdExtent_0_symbol_text::value>::ALIGN_LEFT>;
 
   public:
     ///

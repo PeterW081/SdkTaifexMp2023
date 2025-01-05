@@ -1,36 +1,41 @@
 #include "xplum_sdkit/taifex_msg_proto/static_function_msg.h"
 #pragma
 
-#include "xplum_model/taifex_msg_proto/static_constant.h"
+#include "xplum_model/taifex_msg_proto/network_osi_L06/constant_msg.h"
 
 namespace nscxx_root = xplum_sdkit::taifex_msg_proto::ez_view;
-namespace nscxx::origin
+namespace nscxx
 {
-namespace message_field = xplum_model::taifex_msg_proto::message_field;
-namespace mt_sizeof_msg_content = xplum_model::taifex_msg_proto::mt_sizeof_msg_content;
+namespace mt_sizeof_msg_content = xplum_model::taifex_msg_proto::msg_sizeof_content;
 }
 
-auto nscxx_root::FX_GET_MSG_LENGTH_IN_ORIGIN_MSG(void *data) -> xplum_model::taifex_msg_proto::message_field::uint16 &
+extern auto      //
+    nscxx_root:: //
+    FX_GET_MSG_LENGTH_IN_ORIGIN_MSG(void *data) -> view::message_field::uint16
 {
-    static_assert(std::is_same_v<xplum_model::taifex_msg_proto::message_field::uint16, decltype(nscxx::origin::message_field::hdr::msg_length)>);
-    return *(reinterpret_cast<nscxx::origin::message_field::uint16 *>(reinterpret_cast<std::byte *>(data) + nscxx::origin::mt_sizeof_msg_content::OFFSETOF_MSG_LENGTH));
+    static_assert(std::is_same_v<xplum_model::taifex_msg_proto::message_field::uint16, decltype(xplum_model::taifex_msg_proto::message_field::hdr::msg_length)>);
+    return *(reinterpret_cast<xplum_model::taifex_msg_proto::message_field::uint16 *>(reinterpret_cast<std::byte *>(data) + nscxx::mt_sizeof_msg_content::G_offsetof_msg_length));
 }
 
-auto nscxx_root::FX_GET_MSG_LENGTH_IN_ORIGIN_MSG_1CONST(void *data) -> const xplum_model::taifex_msg_proto::message_field::uint16 &
+extern auto      //
+    nscxx_root:: //
+    FX_GET_MSG_LENGTH_IN_ORIGIN_MSG_1CONST(void const *data) -> view::message_field::origin::uint16 const &
 {
-    static_assert(std::is_same_v<xplum_model::taifex_msg_proto::message_field::uint16, decltype(nscxx::origin::message_field::hdr::msg_length)>);
-    return FX_GET_MSG_LENGTH_IN_ORIGIN_MSG(data);
+    static_assert(std::is_same_v<xplum_model::taifex_msg_proto::message_field::uint16, decltype(xplum_model::taifex_msg_proto::message_field::hdr::msg_length)>);
+    return *(reinterpret_cast<xplum_model::taifex_msg_proto::message_field::uint16 const *>(reinterpret_cast<std::byte const *>(data) + nscxx::mt_sizeof_msg_content::G_offsetof_msg_length));
 }
 
-auto nscxx_root::FX_GET_SYMBOL_TEXT_IN_VIEW_MSG_FIELD(view::message_field::SymbolX &symbol_x) -> view::message_field::origin::char0 (&)[xplum_model::taifex_msg_proto::message_field::sizeof_array::Symbol::M_SIZEOF_ARR_0_TEXT_SYMBOL]
+extern auto      //
+    nscxx_root:: //
+    FX_GET_SYMBOL_TEXT_IN_VIEW_MSG_FIELD(view::message_field::SymbolX &symbol_x) -> decltype(view::message_field::SymbolText::m_symbol)
 {
-    using xplum_model::taifex_msg_proto::message_field::char0;
-    using SizeOfArraySymbol = xplum_model::taifex_msg_proto::message_field::sizeof_array::Symbol;
-    return static_cast<char0(&)[SizeOfArraySymbol::Symbol::M_SIZEOF_ARR_0_TEXT_SYMBOL]>(std::get<view::message_field::SymbolText>(symbol_x).m_symbol);
+    return std::get<view::message_field::SymbolText>(symbol_x).m_symbol;
 }
 
-auto nscxx_root::FX_GET_MSG_TYPE_IN_ORIGIN_MSG_1CONST(void *data) -> const view::message_field::enumerate::MsgType
+extern auto      //
+    nscxx_root:: //
+    FX_GET_MSG_TYPE_IN_ORIGIN_MSG_1CONST(void *data) -> const view::message_field::enumerate::MsgType
 {
     return view::message_field::enumerate::MsgType( //
-        *reinterpret_cast<view::message_field::enumerate::MsgType::IntegerType *>(reinterpret_cast<std::byte *>(data) + nscxx::origin::mt_sizeof_msg_content::OFFSETOF_MSG_TYPE));
+        *reinterpret_cast<view::message_field::enumerate::MsgType::IntegerType *>(reinterpret_cast<std::byte *>(data) + nscxx::mt_sizeof_msg_content::G_offsetof_msg_type));
 }

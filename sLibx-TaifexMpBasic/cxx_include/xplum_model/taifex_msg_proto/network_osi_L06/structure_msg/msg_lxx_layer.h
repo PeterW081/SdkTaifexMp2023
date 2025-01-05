@@ -1,9 +1,9 @@
 #pragma once
 #include <cassert>
-#include "xplum/expanded_cast/enumerate_cast.h"
-#include "xplum_model/taifex_msg_proto/static_constant.h"
-#include "xplum_model/taifex_msg_proto/structure_message_field/msg_field.h"
-#include "xplum_model/taifex_msg_proto/structure_message_field/msg_field_enumerate.h"
+#include "xplum_model/taifex_msg_proto/network_osi_L06/constant_msg.h"
+#include "xplum_model/taifex_msg_proto/network_osi_L06/structure_msg_field/msg_field.h"
+#include "xplum_model/taifex_msg_proto/network_osi_L06/structure_msg_field/msg_field_enumerate.h"
+#
 
 namespace xplum_model::taifex_msg_proto::message
 {
@@ -24,9 +24,9 @@ struct L60;
 struct xplum_model::taifex_msg_proto::message::LXX
 {
     /* L10_FieldNo01 */ message_field::hdr hdr = {
-        .msg_length = sizeof(LXX) - mt_sizeof_msg_content::SIZE_OUT_OF_MSG_LENGTH,
+        .msg_length = sizeof(LXX) - msg_sizeof_content::G_size_out_of_msg_length,
         .MsgSeqNum = 0,
-        .MessageType = xplum::ToEnumUnderlyingValue(message_field::enumerate::MessageType::LXX),
+        .MessageType = static_cast<message_field::uint8::value_type>(message_field::enumerate::MessageType::LXX),
     };
     /* L10_FieldNo02 */ message_field::uint8 status_code;
     /* L10_FieldNo03 */ message_field::uint32 start_in_bound_num = 0;
@@ -39,9 +39,9 @@ struct xplum_model::taifex_msg_proto::message::LXX
 struct xplum_model::taifex_msg_proto::message::LXX
 {
     /* L20_FieldNo01 */ message_field::hdr hdr = {
-        .msg_length = sizeof(LXX) - mt_sizeof_msg_content::SIZE_OUT_OF_MSG_LENGTH,
+        .msg_length = sizeof(LXX) - msg_sizeof_content::G_size_out_of_msg_length,
         .MsgSeqNum = 0,
-        .MessageType = xplum::ToEnumUnderlyingValue(message_field::enumerate::MessageType::LXX),
+        .MessageType = static_cast<message_field::uint8::value_type>(message_field::enumerate::MessageType::LXX),
     };
     /* L20_FieldNo02 */ message_field::uint8 status_code;
     /* L20_FieldNo03 */ message_field::uint8 CheckSum;
@@ -53,9 +53,9 @@ struct xplum_model::taifex_msg_proto::message::LXX
 struct xplum_model::taifex_msg_proto::message::LXX
 {
     /* L30_FieldNo01 */ message_field::hdr hdr = {
-        .msg_length = sizeof(LXX) - mt_sizeof_msg_content::SIZE_OUT_OF_MSG_LENGTH,
+        .msg_length = sizeof(LXX) - msg_sizeof_content::G_size_out_of_msg_length,
         .MsgSeqNum = 0,
-        .MessageType = xplum::ToEnumUnderlyingValue(message_field::enumerate::MessageType::LXX),
+        .MessageType = static_cast<message_field::uint8::value_type>(message_field::enumerate::MessageType::LXX),
     };
     /* L30_FieldNo02 */ message_field::uint8 status_code;
     /* L30_FieldNo03 */ message_field::uint16 append_no;
@@ -71,9 +71,9 @@ struct xplum_model::taifex_msg_proto::message::LXX
 struct xplum_model::taifex_msg_proto::message::LXX
 {
     /* L40_FieldNo01 */ message_field::hdr hdr = {
-        .msg_length = sizeof(LXX) - mt_sizeof_msg_content::SIZE_OUT_OF_MSG_LENGTH,
+        .msg_length = sizeof(LXX) - msg_sizeof_content::G_size_out_of_msg_length,
         .MsgSeqNum = 0,
-        .MessageType = xplum::ToEnumUnderlyingValue(message_field::enumerate::MessageType::LXX),
+        .MessageType = static_cast<message_field::uint8::value_type>(message_field::enumerate::MessageType::LXX),
     };
     /* L40_FieldNo02 */ message_field::uint8 status_code;
     /* L40_FieldNo03 */ message_field::uint16 append_no;
@@ -93,22 +93,22 @@ struct xplum_model::taifex_msg_proto::message::LXX
 template <xplum_model::taifex_msg_proto::type::uint16 VALUE_MSG_LENGTH>
 struct xplum_model::taifex_msg_proto::message::LXX
 {
-    static_assert(VALUE_MSG_LENGTH >= mt_sizeof_msg_content::SIZE_OUT_OF_L41_DATA_IN_MSG_LENGTH);
+    static_assert(VALUE_MSG_LENGTH >= msg_sizeof_content::G_size_out_of_L41_data_in_msg_length);
     /* L41_FieldNo01 */ message_field::hdr hdr = {
         .msg_length = VALUE_MSG_LENGTH,
         .MsgSeqNum = 0,
-        .MessageType = xplum::ToEnumUnderlyingValue(message_field::enumerate::MessageType::LXX),
+        .MessageType = static_cast<message_field::uint8::value_type>(message_field::enumerate::MessageType::LXX),
     };
     /* L41_FieldNo02 */ message_field::uint8 status_code;
     /* L41_FieldNo03 */ message_field::uint8 is_eof;
     /* L41_FieldNo04 */ message_field::uint32 file_size;
-    /* L41_FieldNo05 */ message_field::uint8 data[VALUE_MSG_LENGTH - mt_sizeof_msg_content::SIZE_OUT_OF_L41_DATA_IN_MSG_LENGTH];
+    /* L41_FieldNo05 */ message_field::uint8_arr<VALUE_MSG_LENGTH - msg_sizeof_content::G_size_out_of_L41_data_in_msg_length> data;
     /* L41_FieldNo06 */ message_field::uint8 CheckSum;
 
   public:
     LXX(type::uint16 value_msg_length = VALUE_MSG_LENGTH)
     {
-        assert(value_msg_length >= mt_sizeof_msg_content::VALUE_MIN_OF_MSG_LENGTH_L41);
+        assert(value_msg_length >= msg_sizeof_content::G_value_min_of_msg_length_L41);
         assert(value_msg_length <= VALUE_MSG_LENGTH);
         this->hdr.msg_length = value_msg_length;
         if constexpr (true)
@@ -127,9 +127,9 @@ struct xplum_model::taifex_msg_proto::message::LXX
 struct xplum_model::taifex_msg_proto::message::LXX
 {
     /* L42_FieldNo01 */ message_field::hdr hdr = {
-        .msg_length = sizeof(LXX) - mt_sizeof_msg_content::SIZE_OUT_OF_MSG_LENGTH,
+        .msg_length = sizeof(LXX) - msg_sizeof_content::G_size_out_of_msg_length,
         .MsgSeqNum = 0,
-        .MessageType = xplum::ToEnumUnderlyingValue(message_field::enumerate::MessageType::LXX),
+        .MessageType = static_cast<message_field::uint8::value_type>(message_field::enumerate::MessageType::LXX),
     };
     /* L42_FieldNo02 */ message_field::uint8 status_code;
     /* L42_FieldNo03 */ message_field::uint8 CheckSum;
@@ -141,9 +141,9 @@ struct xplum_model::taifex_msg_proto::message::LXX
 struct xplum_model::taifex_msg_proto::message::LXX
 {
     /* L50_FieldNo01 */ message_field::hdr hdr = {
-        .msg_length = sizeof(LXX) - mt_sizeof_msg_content::SIZE_OUT_OF_MSG_LENGTH,
+        .msg_length = sizeof(LXX) - msg_sizeof_content::G_size_out_of_msg_length,
         .MsgSeqNum = 0,
-        .MessageType = xplum::ToEnumUnderlyingValue(message_field::enumerate::MessageType::LXX),
+        .MessageType = static_cast<message_field::uint8::value_type>(message_field::enumerate::MessageType::LXX),
     };
     /* L50_FieldNo02 */ message_field::uint8 status_code;
     /* L50_FieldNo03 */ message_field::uint8 HeartBtInt = 30;
@@ -157,9 +157,9 @@ struct xplum_model::taifex_msg_proto::message::LXX
 struct xplum_model::taifex_msg_proto::message::LXX
 {
     /* L60_FieldNo01 */ message_field::hdr hdr = {
-        .msg_length = sizeof(LXX) - mt_sizeof_msg_content::SIZE_OUT_OF_MSG_LENGTH,
+        .msg_length = sizeof(LXX) - msg_sizeof_content::G_size_out_of_msg_length,
         .MsgSeqNum = 0,
-        .MessageType = xplum::ToEnumUnderlyingValue(message_field::enumerate::MessageType::LXX),
+        .MessageType = static_cast<message_field::uint8::value_type>(message_field::enumerate::MessageType::LXX),
     };
     /* L60_FieldNo02 */ message_field::uint8 status_code;
     /* L60_FieldNo03 */ message_field::uint8 CheckSum;

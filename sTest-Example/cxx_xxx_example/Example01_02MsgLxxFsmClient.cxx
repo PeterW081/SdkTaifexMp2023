@@ -21,7 +21,6 @@ static const auto G_PATTERN_UNITY_TCP_SESSION = kitbag::UnityTcpSession{
 TEST(Example01_MsgLxx, Example01_02MsgLxxFsmClient)
 {
 #if (true)
-    return;
     GTEST_SKIP();
 #endif
 

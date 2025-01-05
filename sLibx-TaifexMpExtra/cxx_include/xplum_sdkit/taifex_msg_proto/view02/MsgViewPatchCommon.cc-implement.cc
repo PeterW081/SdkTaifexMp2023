@@ -2,7 +2,7 @@
 #include "./MsgViewPatchCommon.h"
 #pragma
 
-#include "xplum_model/taifex_msg_proto/static_function_msg.h"
+#include "xplum_model/taifex_msg_proto/network_osi_L06/function_msg.h"
 
 // using xplum_sdkit::taifex_msg_proto::view02::msg_view_element::_nsign::MsgViewPatchCommon;
 // > fx_assign_m_msg_time()
@@ -73,9 +73,9 @@ template <typename TYPE_MSG_VIEW02_PANEL>
 void xplum_sdkit::taifex_msg_proto::view02::msg_view_element::_nsign:: //
     MsgViewPatchCommon<TYPE_MSG_VIEW02_PANEL>::fx_assign_m_check_sum_0_algorithm()
 {
-    namespace ns0_origin_algorithm = xplum_model::taifex_msg_proto::algorithm;
+    namespace ns0_origin_algorithm = xplum_model::taifex_msg_proto::msg_algorithm;
     const auto &data = this->thiz->data_span();
-    this->thiz->m_check_sum = ns0_origin_algorithm::FX_MSG_CHECK_SUM(data.data(), data.size());
+    this->thiz->m_check_sum = ns0_origin_algorithm::FX_msg_check_sum(data.data(), data.size());
 }
 
 // using xplum_sdkit::taifex_msg_proto::view02::msg_view_element::_nsign::MsgViewPatchCommon;
