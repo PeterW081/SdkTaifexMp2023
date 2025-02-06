@@ -3,6 +3,7 @@
 #include <string>
 #include <string_view>
 #include "xplum/consteval_method/algorithm_method.h"
+static_assert(std::is_same_v<ext::long_double_t, std::invoke_result_t<decltype(xplum::constexpr_method::FX_powl), std::size_t, std::size_t>>);
 
 namespace xplum::ancestor
 {
@@ -26,7 +27,7 @@ class xplum::ancestor::ConvertorBtwStrIntByCustomDigit
     static constexpr auto M_DIGIT_TABLE_SIZE = M0_DIGIT_TABLE_SIZE;
     static constexpr auto M_DIGIT_TABLE_TAIL = ARRAY_DIGIT_TABLE + M_DIGIT_TABLE_SIZE; // 不是末個元素位置，而是末個元素位置的下個位置。
     static constexpr auto M_STRING_MAX_SIZE = VALUE_STRING_MAX_SIZE;
-    static constexpr auto M_INTEGER_MAX_VALUE = std::min((long double){std::numeric_limits<TYPENAME_INTEGER_TYPE>::max()}, xplum::constexpr_method::Powl(M_STRING_MAX_SIZE, M_DIGIT_TABLE_SIZE));
+    static constexpr auto M_INTEGER_MAX_VALUE = std::min(xplum::constexpr_method::FX_powl(M_STRING_MAX_SIZE, M_DIGIT_TABLE_SIZE), static_cast<ext::long_double_t>(std::numeric_limits<TYPENAME_INTEGER_TYPE>::max()));
 
   public:
     using TypeInteger = TYPENAME_INTEGER_TYPE;
@@ -129,7 +130,7 @@ auto xplum::ancestor::ConvertorBtwStrIntByCustomDigit<TP01, TP02, TP03>::To_Valu
     {
         value_string_size = VALUE_STRING_SIZE;
         static_assert(VALUE_STRING_SIZE != 0);
-        static_assert(xplum::constexpr_method::Powl(M_DIGIT_TABLE_SIZE, VALUE_STRING_SIZE) <= M_INTEGER_MAX_VALUE);
+        static_assert(xplum::constexpr_method::FX_powl(M_DIGIT_TABLE_SIZE, VALUE_STRING_SIZE) <= M_INTEGER_MAX_VALUE);
     }
     if constexpr (VALUE_STRING_SIZE == std::dynamic_extent)
     {

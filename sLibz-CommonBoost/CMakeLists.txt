@@ -9,9 +9,13 @@ project("${VAR_project_name}")
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 ##X
-find_package(Boost REQUIRED COMPONENTS system)
+find_package("spdlog" REQUIRED)
+find_package("Boost" REQUIRED COMPONENTS "system")
 
 ###
+unset(ARR_cxx_src)
+unset(ARR_cxx_include)
+unset(ARR_cxx_library)
 file(
   GLOB_RECURSE ARR_cxx_src
   "${PROJECT_SOURCE_DIR}/cxx_src/*.cxx"
@@ -24,6 +28,7 @@ list(
   APPEND ARR_cxx_library
   "${VAR_package_name}-sLibz-Common"
   #
+  "spdlog::spdlog"
   "Boost::system"
   #
 )

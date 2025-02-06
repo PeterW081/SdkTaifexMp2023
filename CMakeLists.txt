@@ -1,4 +1,4 @@
-set(VAR_cmake_version "3.12")
+set(VAR_cmake_version "3.24")
 set(VAR_package_name "XplumSdk-TaifexMp")
 ##X
 set(OPT_IS_ENABLE_EXAMPLE ON)
@@ -13,7 +13,7 @@ add_subdirectory("${PROJECT_SOURCE_DIR}/sLibx-TaifexMpExtra/")
 add_subdirectory("${PROJECT_SOURCE_DIR}/sLibz-Common/")
 add_subdirectory("${PROJECT_SOURCE_DIR}/sLibz-CommonBoost/")
 ##X
-if("${OPT_IS_ENABLE_EXAMPLE}")
+if(OPT_IS_ENABLE_EXAMPLE)
   add_subdirectory("${PROJECT_SOURCE_DIR}/sTest-Example/")
 endif()
 

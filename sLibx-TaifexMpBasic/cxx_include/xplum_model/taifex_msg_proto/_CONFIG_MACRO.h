@@ -1,15 +1,17 @@
 #pragma once
-#include <cstddef>
-#include "_define_cxx.h"
+#include <cstdint>
+#
 
 namespace xplum_model::taifex_msg_proto::cfg
 {
-extern const type::TypeMsgLength SIZE_MAX_OF_MSG_READ_BUFFER;
+extern const std::uint16_t G_size_max_of_msg_read_buffer;
 }
 
-#if (!defined(MACRO_XPLUM_0_TAIFEX_MSG_PROTO_0_SIZE_MAX_OF_MSG_READ_BUFFER))
-inline const auto xplum_model::taifex_msg_proto::cfg::SIZE_MAX_OF_MSG_READ_BUFFER = type::TypeMsgLength(1 * 1024);
+inline const auto xplum_model::taifex_msg_proto::cfg::G_size_max_of_msg_read_buffer =
+#if (not defined(MACRO_XPLUM_0_TAIFEX_MSG_PROTO_0_SIZE_MAX_OF_MSG_READ_BUFFER))
+    std::uint16_t(1024 * 1)
 #else
 #warning "defined(MACRO_XPLUM_0_TAIFEX_MSG_PROTO_0_SIZE_MAX_OF_MSG_READ_BUFFER) == true"
-inline const auto xplum_model::taifex_msg_proto::cfg::SIZE_MAX_OF_MSG_READ_BUFFER = type::TypeMsgLength(MACRO_XPLUM_0_TAIFEX_MSG_PROTO_0_SIZE_MAX_OF_MSG_READ_BUFFER);
+    std::uint16_t(MACRO_XPLUM_0_TAIFEX_MSG_PROTO_0_SIZE_MAX_OF_MSG_READ_BUFFER)
 #endif
+    ;

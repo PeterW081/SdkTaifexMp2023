@@ -1,18 +1,22 @@
 #pragma once
 #include "./AssignerMsgFieldArrayChar.h"
 #pragma
+#
 
 template <std::size_t TP01, char TP02, typename xplum::ancestor::AssignerArrayChar<TP01>::Align TP03>
-template <std::size_t RVALUE_ARRAY_SIZE>
-auto xplum_sdkit::taifex_msg_proto::ancestor::AssignerMsgFieldArrayChar<TP01, TP02, TP03>::Assign(Type (&lvariable)[M_SIZE], std::span<Type, RVALUE_ARRAY_SIZE> rvalue) -> std::size_t
+template <std::size_t RVALUE_array_size>
+auto                                              //
+    xplum_sdkit::taifex_msg_proto::ancestor::     //
+    AssignerMsgFieldArrayChar<TP01, TP02, TP03>:: //
+    FX_assign(Type (&lvariable)[M_size], const std::span<Type, RVALUE_array_size> rvalue) -> std::size_t
 {
-    if constexpr (RVALUE_ARRAY_SIZE == M_SIZE)
+    if constexpr (RVALUE_array_size == M_size)
     {
         return SUPER::Assign(lvariable, rvalue);
     }
-    if constexpr (RVALUE_ARRAY_SIZE == std::dynamic_extent)
+    if constexpr (RVALUE_array_size == std::dynamic_extent)
     {
-        if (rvalue.size() == M_SIZE)
+        if (rvalue.size() == M_size)
         {
             return SUPER::Assign(lvariable, rvalue);
         }
@@ -21,14 +25,20 @@ auto xplum_sdkit::taifex_msg_proto::ancestor::AssignerMsgFieldArrayChar<TP01, TP
 }
 
 template <std::size_t TP01, char TP02, typename xplum::ancestor::AssignerArrayChar<TP01>::Align TP03>
-template <std::size_t RVALUE_ARRAY_SIZE>
-auto xplum_sdkit::taifex_msg_proto::ancestor::AssignerMsgFieldArrayChar<TP01, TP02, TP03>::Assign(Type (&lvariable)[M_SIZE], const std::array<Type, RVALUE_ARRAY_SIZE> &rvalue) -> std::size_t
+template <std::size_t RVALUE_array_size>
+auto                                              //
+    xplum_sdkit::taifex_msg_proto::ancestor::     //
+    AssignerMsgFieldArrayChar<TP01, TP02, TP03>:: //
+    FX_assign(Type (&lvariable)[M_size], const std::array<Type, RVALUE_array_size> &rvalue) -> std::size_t
 {
-    return Assign(lvariable, std::span<Type, RVALUE_ARRAY_SIZE>(const_cast<Type *>(rvalue.data()), RVALUE_ARRAY_SIZE));
+    return FX_assign(lvariable, std::span<Type, RVALUE_array_size>(const_cast<Type *>(rvalue.data()), RVALUE_array_size));
 }
 
 template <std::size_t TP01, char TP02, typename xplum::ancestor::AssignerArrayChar<TP01>::Align TP03>
-auto xplum_sdkit::taifex_msg_proto::ancestor::AssignerMsgFieldArrayChar<TP01, TP02, TP03>::Assign(Type (&lvariable)[M_SIZE], std::string_view rvalue) -> std::size_t
+auto                                              //
+    xplum_sdkit::taifex_msg_proto::ancestor::     //
+    AssignerMsgFieldArrayChar<TP01, TP02, TP03>:: //
+    FX_assign(Type (&lvariable)[M_size], const std::string_view rvalue) -> std::size_t
 {
-    return Assign(lvariable, std::span(const_cast<Type *>(rvalue.data()), rvalue.size()));
+    return FX_assign(lvariable, std::span(const_cast<Type *>(rvalue.data()), rvalue.size()));
 }

@@ -1,12 +1,16 @@
 #pragma once
 #include <cassert>
 
+namespace ext
+{
+using long_double_t = long double;
+}
 namespace xplum::constexpr_method
 {
-long double constexpr Powl(std::size_t base, std::size_t exp);
+extern constexpr auto FX_powl(std::size_t, std::size_t) -> ext::long_double_t;
 }
 
-inline long double constexpr xplum::constexpr_method::Powl(std::size_t base, std::size_t exp)
+inline constexpr auto xplum::constexpr_method::FX_powl(std::size_t base, std::size_t exp) -> ext::long_double_t
 {
     // like std::powl()
     if (exp == 0)
@@ -18,8 +22,8 @@ inline long double constexpr xplum::constexpr_method::Powl(std::size_t base, std
         return base;
     }
 
-    long double var_last;
-    long double var = 1;
+    ext::long_double_t var_last;
+    ext::long_double_t var = 1;
     for (std::size_t i = 0, j = exp; i < j; i++)
     {
         var_last = var;
